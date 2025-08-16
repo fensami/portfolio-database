@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response) => {
     res.send({
-        message: "Welcome to Bike Servicing Management"
+        message: "Welcome to My Portfolio Database"
     })
 })
 // app.use('/api/v1/user', userRoutes)

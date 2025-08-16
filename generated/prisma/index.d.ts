@@ -14,38 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Customer
+ * Model Project
  * 
  */
-export type Customer = $Result.DefaultSelection<Prisma.$CustomerPayload>
-/**
- * Model Bike
- * 
- */
-export type Bike = $Result.DefaultSelection<Prisma.$BikePayload>
-/**
- * Model service
- * 
- */
-export type service = $Result.DefaultSelection<Prisma.$servicePayload>
-
-/**
- * Enums
- */
-export namespace $Enums {
-  export const serviceStatus: {
-  PENDING: 'PENDING',
-  INPROGRESS: 'INPROGRESS',
-  DONE: 'DONE'
-};
-
-export type serviceStatus = (typeof serviceStatus)[keyof typeof serviceStatus]
-
-}
-
-export type serviceStatus = $Enums.serviceStatus
-
-export const serviceStatus: typeof $Enums.serviceStatus
+export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -54,8 +26,8 @@ export const serviceStatus: typeof $Enums.serviceStatus
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Customers
- * const customers = await prisma.customer.findMany()
+ * // Fetch zero or more Projects
+ * const projects = await prisma.project.findMany()
  * ```
  *
  *
@@ -63,7 +35,7 @@ export const serviceStatus: typeof $Enums.serviceStatus
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  const U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
   [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
@@ -75,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Customers
-   * const customers = await prisma.customer.findMany()
+   * // Fetch zero or more Projects
+   * const projects = await prisma.project.findMany()
    * ```
    *
    *
@@ -95,13 +67,6 @@ export class PrismaClient<
    * Disconnect from the database
    */
   $disconnect(): $Utils.JsPromise<void>;
-
-  /**
-   * Add a middleware
-   * @deprecated since 4.16.0. For new code, prefer client extensions instead.
-   * @see https://pris.ly/d/extensions
-   */
-  $use(cb: Prisma.Middleware): void
 
 /**
    * Executes a prepared raw query and returns the number of affected rows.
@@ -173,34 +138,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.customer`: Exposes CRUD operations for the **Customer** model.
+   * `prisma.project`: Exposes CRUD operations for the **Project** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Customers
-    * const customers = await prisma.customer.findMany()
+    * // Fetch zero or more Projects
+    * const projects = await prisma.project.findMany()
     * ```
     */
-  get customer(): Prisma.CustomerDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.bike`: Exposes CRUD operations for the **Bike** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Bikes
-    * const bikes = await prisma.bike.findMany()
-    * ```
-    */
-  get bike(): Prisma.BikeDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.service`: Exposes CRUD operations for the **service** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Services
-    * const services = await prisma.service.findMany()
-    * ```
-    */
-  get service(): Prisma.serviceDelegate<ExtArgs, ClientOptions>;
+  get project(): Prisma.ProjectDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -259,8 +204,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.14.0
+   * Query Engine version: 717184b7b35ea05dfa71a3236b7af656013e1e49
    */
   export type PrismaVersion = {
     client: string
@@ -641,9 +586,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Customer: 'Customer',
-    Bike: 'Bike',
-    service: 'service'
+    Project: 'Project'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -662,229 +605,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "customer" | "bike" | "service"
+      modelProps: "project"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Customer: {
-        payload: Prisma.$CustomerPayload<ExtArgs>
-        fields: Prisma.CustomerFieldRefs
+      Project: {
+        payload: Prisma.$ProjectPayload<ExtArgs>
+        fields: Prisma.ProjectFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CustomerFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload> | null
+            args: Prisma.ProjectFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CustomerFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           findFirst: {
-            args: Prisma.CustomerFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload> | null
+            args: Prisma.ProjectFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CustomerFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           findMany: {
-            args: Prisma.CustomerFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>[]
+            args: Prisma.ProjectFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>[]
           }
           create: {
-            args: Prisma.CustomerCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           createMany: {
-            args: Prisma.CustomerCreateManyArgs<ExtArgs>
+            args: Prisma.ProjectCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CustomerCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>[]
+            args: Prisma.ProjectCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>[]
           }
           delete: {
-            args: Prisma.CustomerDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           update: {
-            args: Prisma.CustomerUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           deleteMany: {
-            args: Prisma.CustomerDeleteManyArgs<ExtArgs>
+            args: Prisma.ProjectDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CustomerUpdateManyArgs<ExtArgs>
+            args: Prisma.ProjectUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CustomerUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>[]
+            args: Prisma.ProjectUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>[]
           }
           upsert: {
-            args: Prisma.CustomerUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CustomerPayload>
+            args: Prisma.ProjectUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProjectPayload>
           }
           aggregate: {
-            args: Prisma.CustomerAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCustomer>
+            args: Prisma.ProjectAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProject>
           }
           groupBy: {
-            args: Prisma.CustomerGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CustomerGroupByOutputType>[]
+            args: Prisma.ProjectGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProjectGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CustomerCountArgs<ExtArgs>
-            result: $Utils.Optional<CustomerCountAggregateOutputType> | number
-          }
-        }
-      }
-      Bike: {
-        payload: Prisma.$BikePayload<ExtArgs>
-        fields: Prisma.BikeFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.BikeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.BikeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          findFirst: {
-            args: Prisma.BikeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.BikeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          findMany: {
-            args: Prisma.BikeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>[]
-          }
-          create: {
-            args: Prisma.BikeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          createMany: {
-            args: Prisma.BikeCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.BikeCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>[]
-          }
-          delete: {
-            args: Prisma.BikeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          update: {
-            args: Prisma.BikeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          deleteMany: {
-            args: Prisma.BikeDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.BikeUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.BikeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>[]
-          }
-          upsert: {
-            args: Prisma.BikeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BikePayload>
-          }
-          aggregate: {
-            args: Prisma.BikeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateBike>
-          }
-          groupBy: {
-            args: Prisma.BikeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<BikeGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.BikeCountArgs<ExtArgs>
-            result: $Utils.Optional<BikeCountAggregateOutputType> | number
-          }
-        }
-      }
-      service: {
-        payload: Prisma.$servicePayload<ExtArgs>
-        fields: Prisma.serviceFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.serviceFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.serviceFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          findFirst: {
-            args: Prisma.serviceFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.serviceFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          findMany: {
-            args: Prisma.serviceFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>[]
-          }
-          create: {
-            args: Prisma.serviceCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          createMany: {
-            args: Prisma.serviceCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.serviceCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>[]
-          }
-          delete: {
-            args: Prisma.serviceDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          update: {
-            args: Prisma.serviceUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          deleteMany: {
-            args: Prisma.serviceDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.serviceUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.serviceUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>[]
-          }
-          upsert: {
-            args: Prisma.serviceUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$servicePayload>
-          }
-          aggregate: {
-            args: Prisma.ServiceAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateService>
-          }
-          groupBy: {
-            args: Prisma.serviceGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ServiceGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.serviceCountArgs<ExtArgs>
-            result: $Utils.Optional<ServiceCountAggregateOutputType> | number
+            args: Prisma.ProjectCountArgs<ExtArgs>
+            result: $Utils.Optional<ProjectCountAggregateOutputType> | number
           }
         }
       }
@@ -931,16 +726,24 @@ export namespace Prisma {
     /**
      * @example
      * ```
-     * // Defaults to stdout
+     * // Shorthand for `emit: 'stdout'`
      * log: ['query', 'info', 'warn', 'error']
      * 
-     * // Emit as events
+     * // Emit as events only
      * log: [
-     *   { emit: 'stdout', level: 'query' },
-     *   { emit: 'stdout', level: 'info' },
-     *   { emit: 'stdout', level: 'warn' }
-     *   { emit: 'stdout', level: 'error' }
+     *   { emit: 'event', level: 'query' },
+     *   { emit: 'event', level: 'info' },
+     *   { emit: 'event', level: 'warn' }
+     *   { emit: 'event', level: 'error' }
      * ]
+     * 
+     * / Emit as events and log to stdout
+     * og: [
+     *  { emit: 'stdout', level: 'query' },
+     *  { emit: 'stdout', level: 'info' },
+     *  { emit: 'stdout', level: 'warn' }
+     *  { emit: 'stdout', level: 'error' }
+     * 
      * ```
      * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/logging#the-log-option).
      */
@@ -972,9 +775,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    customer?: CustomerOmit
-    bike?: BikeOmit
-    service?: serviceOmit
+    project?: ProjectOmit
   }
 
   /* Types for Logging */
@@ -984,10 +785,15 @@ export namespace Prisma {
     emit: 'stdout' | 'event'
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-  export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
-    GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
-    : never
+  export type CheckIsLogLevel<T> = T extends LogLevel ? T : never;
+
+  export type GetLogType<T> = CheckIsLogLevel<
+    T extends LogDefinition ? T['level'] : T
+  >;
+
+  export type GetEvents<T extends any[]> = T extends Array<LogLevel | LogDefinition>
+    ? GetLogType<T[number]>
+    : never;
 
   export type QueryEvent = {
     timestamp: Date
@@ -1028,25 +834,6 @@ export namespace Prisma {
     | 'findRaw'
     | 'groupBy'
 
-  /**
-   * These options are being passed into the middleware as "params"
-   */
-  export type MiddlewareParams = {
-    model?: ModelName
-    action: PrismaAction
-    args: any
-    dataPath: string[]
-    runInTransaction: boolean
-  }
-
-  /**
-   * The `T` type makes sure, that the `return proceed` is not forgotten in the middleware implementation
-   */
-  export type Middleware<T = any> = (
-    params: MiddlewareParams,
-    next: (params: MiddlewareParams) => $Utils.JsPromise<T>,
-  ) => $Utils.JsPromise<T>
-
   // tested in getLogLevel.test.ts
   export function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLevel | undefined;
 
@@ -1064,394 +851,386 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type CustomerCountOutputType
-   */
-
-  export type CustomerCountOutputType = {
-    Bike: number
-  }
-
-  export type CustomerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Bike?: boolean | CustomerCountOutputTypeCountBikeArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CustomerCountOutputType without action
-   */
-  export type CustomerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CustomerCountOutputType
-     */
-    select?: CustomerCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CustomerCountOutputType without action
-   */
-  export type CustomerCountOutputTypeCountBikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BikeWhereInput
-  }
-
 
   /**
    * Models
    */
 
   /**
-   * Model Customer
+   * Model Project
    */
 
-  export type AggregateCustomer = {
-    _count: CustomerCountAggregateOutputType | null
-    _min: CustomerMinAggregateOutputType | null
-    _max: CustomerMaxAggregateOutputType | null
+  export type AggregateProject = {
+    _count: ProjectCountAggregateOutputType | null
+    _min: ProjectMinAggregateOutputType | null
+    _max: ProjectMaxAggregateOutputType | null
   }
 
-  export type CustomerMinAggregateOutputType = {
+  export type ProjectMinAggregateOutputType = {
     id: string | null
     name: string | null
-    email: string | null
-    phone: string | null
+    bannerImage: string | null
+    description: string | null
+    liveLink: string | null
+    githubLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CustomerMaxAggregateOutputType = {
+  export type ProjectMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    email: string | null
-    phone: string | null
+    bannerImage: string | null
+    description: string | null
+    liveLink: string | null
+    githubLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
-  export type CustomerCountAggregateOutputType = {
+  export type ProjectCountAggregateOutputType = {
     id: number
     name: number
-    email: number
-    phone: number
+    bannerImage: number
+    description: number
+    liveLink: number
+    githubLink: number
     createdAt: number
     updatedAt: number
+    images: number
     _all: number
   }
 
 
-  export type CustomerMinAggregateInputType = {
+  export type ProjectMinAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    phone?: true
+    bannerImage?: true
+    description?: true
+    liveLink?: true
+    githubLink?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CustomerMaxAggregateInputType = {
+  export type ProjectMaxAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    phone?: true
+    bannerImage?: true
+    description?: true
+    liveLink?: true
+    githubLink?: true
     createdAt?: true
     updatedAt?: true
   }
 
-  export type CustomerCountAggregateInputType = {
+  export type ProjectCountAggregateInputType = {
     id?: true
     name?: true
-    email?: true
-    phone?: true
+    bannerImage?: true
+    description?: true
+    liveLink?: true
+    githubLink?: true
     createdAt?: true
     updatedAt?: true
+    images?: true
     _all?: true
   }
 
-  export type CustomerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Customer to aggregate.
+     * Filter which Project to aggregate.
      */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Projects to fetch.
      */
-    orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
+    orderBy?: ProjectOrderByWithRelationInput | ProjectOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CustomerWhereUniqueInput
+    cursor?: ProjectWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Projects from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Projects.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Customers
+     * Count returned Projects
     **/
-    _count?: true | CustomerCountAggregateInputType
+    _count?: true | ProjectCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CustomerMinAggregateInputType
+    _min?: ProjectMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CustomerMaxAggregateInputType
+    _max?: ProjectMaxAggregateInputType
   }
 
-  export type GetCustomerAggregateType<T extends CustomerAggregateArgs> = {
-        [P in keyof T & keyof AggregateCustomer]: P extends '_count' | 'count'
+  export type GetProjectAggregateType<T extends ProjectAggregateArgs> = {
+        [P in keyof T & keyof AggregateProject]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCustomer[P]>
-      : GetScalarType<T[P], AggregateCustomer[P]>
+        : GetScalarType<T[P], AggregateProject[P]>
+      : GetScalarType<T[P], AggregateProject[P]>
   }
 
 
 
 
-  export type CustomerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CustomerWhereInput
-    orderBy?: CustomerOrderByWithAggregationInput | CustomerOrderByWithAggregationInput[]
-    by: CustomerScalarFieldEnum[] | CustomerScalarFieldEnum
-    having?: CustomerScalarWhereWithAggregatesInput
+  export type ProjectGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProjectWhereInput
+    orderBy?: ProjectOrderByWithAggregationInput | ProjectOrderByWithAggregationInput[]
+    by: ProjectScalarFieldEnum[] | ProjectScalarFieldEnum
+    having?: ProjectScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CustomerCountAggregateInputType | true
-    _min?: CustomerMinAggregateInputType
-    _max?: CustomerMaxAggregateInputType
+    _count?: ProjectCountAggregateInputType | true
+    _min?: ProjectMinAggregateInputType
+    _max?: ProjectMaxAggregateInputType
   }
 
-  export type CustomerGroupByOutputType = {
+  export type ProjectGroupByOutputType = {
     id: string
     name: string
-    email: string
-    phone: string
+    bannerImage: string
+    description: string
+    liveLink: string
+    githubLink: string
     createdAt: Date
     updatedAt: Date
-    _count: CustomerCountAggregateOutputType | null
-    _min: CustomerMinAggregateOutputType | null
-    _max: CustomerMaxAggregateOutputType | null
+    images: string[]
+    _count: ProjectCountAggregateOutputType | null
+    _min: ProjectMinAggregateOutputType | null
+    _max: ProjectMaxAggregateOutputType | null
   }
 
-  type GetCustomerGroupByPayload<T extends CustomerGroupByArgs> = Prisma.PrismaPromise<
+  type GetProjectGroupByPayload<T extends ProjectGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CustomerGroupByOutputType, T['by']> &
+      PickEnumerable<ProjectGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CustomerGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ProjectGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CustomerGroupByOutputType[P]>
-            : GetScalarType<T[P], CustomerGroupByOutputType[P]>
+              : GetScalarType<T[P], ProjectGroupByOutputType[P]>
+            : GetScalarType<T[P], ProjectGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CustomerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    phone?: boolean
+    bannerImage?: boolean
+    description?: boolean
+    liveLink?: boolean
+    githubLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    Bike?: boolean | Customer$BikeArgs<ExtArgs>
-    _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["customer"]>
+    images?: boolean
+  }, ExtArgs["result"]["project"]>
 
-  export type CustomerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    phone?: boolean
+    bannerImage?: boolean
+    description?: boolean
+    liveLink?: boolean
+    githubLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["customer"]>
+    images?: boolean
+  }, ExtArgs["result"]["project"]>
 
-  export type CustomerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    email?: boolean
-    phone?: boolean
+    bannerImage?: boolean
+    description?: boolean
+    liveLink?: boolean
+    githubLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-  }, ExtArgs["result"]["customer"]>
+    images?: boolean
+  }, ExtArgs["result"]["project"]>
 
-  export type CustomerSelectScalar = {
+  export type ProjectSelectScalar = {
     id?: boolean
     name?: boolean
-    email?: boolean
-    phone?: boolean
+    bannerImage?: boolean
+    description?: boolean
+    liveLink?: boolean
+    githubLink?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    images?: boolean
   }
 
-  export type CustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "createdAt" | "updatedAt", ExtArgs["result"]["customer"]>
-  export type CustomerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Bike?: boolean | Customer$BikeArgs<ExtArgs>
-    _count?: boolean | CustomerCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type CustomerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CustomerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "bannerImage" | "description" | "liveLink" | "githubLink" | "createdAt" | "updatedAt" | "images", ExtArgs["result"]["project"]>
 
-  export type $CustomerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Customer"
-    objects: {
-      Bike: Prisma.$BikePayload<ExtArgs>[]
-    }
+  export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Project"
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      email: string
-      phone: string
+      bannerImage: string
+      description: string
+      liveLink: string
+      githubLink: string
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["customer"]>
+      images: string[]
+    }, ExtArgs["result"]["project"]>
     composites: {}
   }
 
-  type CustomerGetPayload<S extends boolean | null | undefined | CustomerDefaultArgs> = $Result.GetResult<Prisma.$CustomerPayload, S>
+  type ProjectGetPayload<S extends boolean | null | undefined | ProjectDefaultArgs> = $Result.GetResult<Prisma.$ProjectPayload, S>
 
-  type CustomerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CustomerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CustomerCountAggregateInputType | true
+  type ProjectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProjectFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProjectCountAggregateInputType | true
     }
 
-  export interface CustomerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Customer'], meta: { name: 'Customer' } }
+  export interface ProjectDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Project'], meta: { name: 'Project' } }
     /**
-     * Find zero or one Customer that matches the filter.
-     * @param {CustomerFindUniqueArgs} args - Arguments to find a Customer
+     * Find zero or one Project that matches the filter.
+     * @param {ProjectFindUniqueArgs} args - Arguments to find a Project
      * @example
-     * // Get one Customer
-     * const customer = await prisma.customer.findUnique({
+     * // Get one Project
+     * const project = await prisma.project.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CustomerFindUniqueArgs>(args: SelectSubset<T, CustomerFindUniqueArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ProjectFindUniqueArgs>(args: SelectSubset<T, ProjectFindUniqueArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Customer that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Project that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CustomerFindUniqueOrThrowArgs} args - Arguments to find a Customer
+     * @param {ProjectFindUniqueOrThrowArgs} args - Arguments to find a Project
      * @example
-     * // Get one Customer
-     * const customer = await prisma.customer.findUniqueOrThrow({
+     * // Get one Project
+     * const project = await prisma.project.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CustomerFindUniqueOrThrowArgs>(args: SelectSubset<T, CustomerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ProjectFindUniqueOrThrowArgs>(args: SelectSubset<T, ProjectFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Customer that matches the filter.
+     * Find the first Project that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerFindFirstArgs} args - Arguments to find a Customer
+     * @param {ProjectFindFirstArgs} args - Arguments to find a Project
      * @example
-     * // Get one Customer
-     * const customer = await prisma.customer.findFirst({
+     * // Get one Project
+     * const project = await prisma.project.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CustomerFindFirstArgs>(args?: SelectSubset<T, CustomerFindFirstArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ProjectFindFirstArgs>(args?: SelectSubset<T, ProjectFindFirstArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Customer that matches the filter or
+     * Find the first Project that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerFindFirstOrThrowArgs} args - Arguments to find a Customer
+     * @param {ProjectFindFirstOrThrowArgs} args - Arguments to find a Project
      * @example
-     * // Get one Customer
-     * const customer = await prisma.customer.findFirstOrThrow({
+     * // Get one Project
+     * const project = await prisma.project.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CustomerFindFirstOrThrowArgs>(args?: SelectSubset<T, CustomerFindFirstOrThrowArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ProjectFindFirstOrThrowArgs>(args?: SelectSubset<T, ProjectFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Customers that matches the filter.
+     * Find zero or more Projects that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ProjectFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Customers
-     * const customers = await prisma.customer.findMany()
+     * // Get all Projects
+     * const projects = await prisma.project.findMany()
      * 
-     * // Get first 10 Customers
-     * const customers = await prisma.customer.findMany({ take: 10 })
+     * // Get first 10 Projects
+     * const projects = await prisma.project.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const customerWithIdOnly = await prisma.customer.findMany({ select: { id: true } })
+     * const projectWithIdOnly = await prisma.project.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CustomerFindManyArgs>(args?: SelectSubset<T, CustomerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ProjectFindManyArgs>(args?: SelectSubset<T, ProjectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Customer.
-     * @param {CustomerCreateArgs} args - Arguments to create a Customer.
+     * Create a Project.
+     * @param {ProjectCreateArgs} args - Arguments to create a Project.
      * @example
-     * // Create one Customer
-     * const Customer = await prisma.customer.create({
+     * // Create one Project
+     * const Project = await prisma.project.create({
      *   data: {
-     *     // ... data to create a Customer
+     *     // ... data to create a Project
      *   }
      * })
      * 
      */
-    create<T extends CustomerCreateArgs>(args: SelectSubset<T, CustomerCreateArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ProjectCreateArgs>(args: SelectSubset<T, ProjectCreateArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Customers.
-     * @param {CustomerCreateManyArgs} args - Arguments to create many Customers.
+     * Create many Projects.
+     * @param {ProjectCreateManyArgs} args - Arguments to create many Projects.
      * @example
-     * // Create many Customers
-     * const customer = await prisma.customer.createMany({
+     * // Create many Projects
+     * const project = await prisma.project.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CustomerCreateManyArgs>(args?: SelectSubset<T, CustomerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ProjectCreateManyArgs>(args?: SelectSubset<T, ProjectCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Customers and returns the data saved in the database.
-     * @param {CustomerCreateManyAndReturnArgs} args - Arguments to create many Customers.
+     * Create many Projects and returns the data saved in the database.
+     * @param {ProjectCreateManyAndReturnArgs} args - Arguments to create many Projects.
      * @example
-     * // Create many Customers
-     * const customer = await prisma.customer.createManyAndReturn({
+     * // Create many Projects
+     * const project = await prisma.project.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Customers and only return the `id`
-     * const customerWithIdOnly = await prisma.customer.createManyAndReturn({
+     * // Create many Projects and only return the `id`
+     * const projectWithIdOnly = await prisma.project.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1461,28 +1240,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CustomerCreateManyAndReturnArgs>(args?: SelectSubset<T, CustomerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ProjectCreateManyAndReturnArgs>(args?: SelectSubset<T, ProjectCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Customer.
-     * @param {CustomerDeleteArgs} args - Arguments to delete one Customer.
+     * Delete a Project.
+     * @param {ProjectDeleteArgs} args - Arguments to delete one Project.
      * @example
-     * // Delete one Customer
-     * const Customer = await prisma.customer.delete({
+     * // Delete one Project
+     * const Project = await prisma.project.delete({
      *   where: {
-     *     // ... filter to delete one Customer
+     *     // ... filter to delete one Project
      *   }
      * })
      * 
      */
-    delete<T extends CustomerDeleteArgs>(args: SelectSubset<T, CustomerDeleteArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ProjectDeleteArgs>(args: SelectSubset<T, ProjectDeleteArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Customer.
-     * @param {CustomerUpdateArgs} args - Arguments to update one Customer.
+     * Update one Project.
+     * @param {ProjectUpdateArgs} args - Arguments to update one Project.
      * @example
-     * // Update one Customer
-     * const customer = await prisma.customer.update({
+     * // Update one Project
+     * const project = await prisma.project.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1492,30 +1271,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CustomerUpdateArgs>(args: SelectSubset<T, CustomerUpdateArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ProjectUpdateArgs>(args: SelectSubset<T, ProjectUpdateArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Customers.
-     * @param {CustomerDeleteManyArgs} args - Arguments to filter Customers to delete.
+     * Delete zero or more Projects.
+     * @param {ProjectDeleteManyArgs} args - Arguments to filter Projects to delete.
      * @example
-     * // Delete a few Customers
-     * const { count } = await prisma.customer.deleteMany({
+     * // Delete a few Projects
+     * const { count } = await prisma.project.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CustomerDeleteManyArgs>(args?: SelectSubset<T, CustomerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ProjectDeleteManyArgs>(args?: SelectSubset<T, ProjectDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Customers.
+     * Update zero or more Projects.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ProjectUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Customers
-     * const customer = await prisma.customer.updateMany({
+     * // Update many Projects
+     * const project = await prisma.project.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1525,14 +1304,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CustomerUpdateManyArgs>(args: SelectSubset<T, CustomerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ProjectUpdateManyArgs>(args: SelectSubset<T, ProjectUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Customers and returns the data updated in the database.
-     * @param {CustomerUpdateManyAndReturnArgs} args - Arguments to update many Customers.
+     * Update zero or more Projects and returns the data updated in the database.
+     * @param {ProjectUpdateManyAndReturnArgs} args - Arguments to update many Projects.
      * @example
-     * // Update many Customers
-     * const customer = await prisma.customer.updateManyAndReturn({
+     * // Update many Projects
+     * const project = await prisma.project.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1541,8 +1320,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Customers and only return the `id`
-     * const customerWithIdOnly = await prisma.customer.updateManyAndReturn({
+     * // Update zero or more Projects and only return the `id`
+     * const projectWithIdOnly = await prisma.project.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1555,56 +1334,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CustomerUpdateManyAndReturnArgs>(args: SelectSubset<T, CustomerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ProjectUpdateManyAndReturnArgs>(args: SelectSubset<T, ProjectUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Customer.
-     * @param {CustomerUpsertArgs} args - Arguments to update or create a Customer.
+     * Create or update one Project.
+     * @param {ProjectUpsertArgs} args - Arguments to update or create a Project.
      * @example
-     * // Update or create a Customer
-     * const customer = await prisma.customer.upsert({
+     * // Update or create a Project
+     * const project = await prisma.project.upsert({
      *   create: {
-     *     // ... data to create a Customer
+     *     // ... data to create a Project
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Customer we want to update
+     *     // ... the filter for the Project we want to update
      *   }
      * })
      */
-    upsert<T extends CustomerUpsertArgs>(args: SelectSubset<T, CustomerUpsertArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ProjectUpsertArgs>(args: SelectSubset<T, ProjectUpsertArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Customers.
+     * Count the number of Projects.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerCountArgs} args - Arguments to filter Customers to count.
+     * @param {ProjectCountArgs} args - Arguments to filter Projects to count.
      * @example
-     * // Count the number of Customers
-     * const count = await prisma.customer.count({
+     * // Count the number of Projects
+     * const count = await prisma.project.count({
      *   where: {
-     *     // ... the filter for the Customers we want to count
+     *     // ... the filter for the Projects we want to count
      *   }
      * })
     **/
-    count<T extends CustomerCountArgs>(
-      args?: Subset<T, CustomerCountArgs>,
+    count<T extends ProjectCountArgs>(
+      args?: Subset<T, ProjectCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CustomerCountAggregateOutputType>
+          : GetScalarType<T['select'], ProjectCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Customer.
+     * Allows you to perform aggregations operations on a Project.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ProjectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1624,13 +1403,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CustomerAggregateArgs>(args: Subset<T, CustomerAggregateArgs>): Prisma.PrismaPromise<GetCustomerAggregateType<T>>
+    aggregate<T extends ProjectAggregateArgs>(args: Subset<T, ProjectAggregateArgs>): Prisma.PrismaPromise<GetProjectAggregateType<T>>
 
     /**
-     * Group by Customer.
+     * Group by Project.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CustomerGroupByArgs} args - Group by arguments.
+     * @param {ProjectGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1645,14 +1424,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CustomerGroupByArgs,
+      T extends ProjectGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CustomerGroupByArgs['orderBy'] }
-        : { orderBy?: CustomerGroupByArgs['orderBy'] },
+        ? { orderBy: ProjectGroupByArgs['orderBy'] }
+        : { orderBy?: ProjectGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1701,22 +1480,21 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CustomerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCustomerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ProjectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Customer model
+   * Fields of the Project model
    */
-  readonly fields: CustomerFieldRefs;
+  readonly fields: ProjectFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Customer.
+   * The delegate class that acts as a "Promise-like" for Project.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CustomerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Bike<T extends Customer$BikeArgs<ExtArgs> = {}>(args?: Subset<T, Customer$BikeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1743,2628 +1521,381 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Customer model
+   * Fields of the Project model
    */
-  interface CustomerFieldRefs {
-    readonly id: FieldRef<"Customer", 'String'>
-    readonly name: FieldRef<"Customer", 'String'>
-    readonly email: FieldRef<"Customer", 'String'>
-    readonly phone: FieldRef<"Customer", 'String'>
-    readonly createdAt: FieldRef<"Customer", 'DateTime'>
-    readonly updatedAt: FieldRef<"Customer", 'DateTime'>
+  interface ProjectFieldRefs {
+    readonly id: FieldRef<"Project", 'String'>
+    readonly name: FieldRef<"Project", 'String'>
+    readonly bannerImage: FieldRef<"Project", 'String'>
+    readonly description: FieldRef<"Project", 'String'>
+    readonly liveLink: FieldRef<"Project", 'String'>
+    readonly githubLink: FieldRef<"Project", 'String'>
+    readonly createdAt: FieldRef<"Project", 'DateTime'>
+    readonly updatedAt: FieldRef<"Project", 'DateTime'>
+    readonly images: FieldRef<"Project", 'String[]'>
   }
     
 
   // Custom InputTypes
   /**
-   * Customer findUnique
+   * Project findUnique
    */
-  export type CustomerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Project to fetch.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter, which Customer to fetch.
-     */
-    where: CustomerWhereUniqueInput
+    where: ProjectWhereUniqueInput
   }
 
   /**
-   * Customer findUniqueOrThrow
+   * Project findUniqueOrThrow
    */
-  export type CustomerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Project to fetch.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter, which Customer to fetch.
-     */
-    where: CustomerWhereUniqueInput
+    where: ProjectWhereUniqueInput
   }
 
   /**
-   * Customer findFirst
+   * Project findFirst
    */
-  export type CustomerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Project to fetch.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter, which Customer to fetch.
-     */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Projects to fetch.
      */
-    orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
+    orderBy?: ProjectOrderByWithRelationInput | ProjectOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Customers.
+     * Sets the position for searching for Projects.
      */
-    cursor?: CustomerWhereUniqueInput
+    cursor?: ProjectWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Projects from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Projects.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Customers.
+     * Filter by unique combinations of Projects.
      */
-    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+    distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
   /**
-   * Customer findFirstOrThrow
+   * Project findFirstOrThrow
    */
-  export type CustomerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Project to fetch.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter, which Customer to fetch.
-     */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Projects to fetch.
      */
-    orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
+    orderBy?: ProjectOrderByWithRelationInput | ProjectOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Customers.
+     * Sets the position for searching for Projects.
      */
-    cursor?: CustomerWhereUniqueInput
+    cursor?: ProjectWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Projects from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Projects.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Customers.
+     * Filter by unique combinations of Projects.
      */
-    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+    distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
   /**
-   * Customer findMany
+   * Project findMany
    */
-  export type CustomerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter, which Projects to fetch.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter, which Customers to fetch.
-     */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Customers to fetch.
+     * Determine the order of Projects to fetch.
      */
-    orderBy?: CustomerOrderByWithRelationInput | CustomerOrderByWithRelationInput[]
+    orderBy?: ProjectOrderByWithRelationInput | ProjectOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Customers.
+     * Sets the position for listing Projects.
      */
-    cursor?: CustomerWhereUniqueInput
+    cursor?: ProjectWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Customers from the position of the cursor.
+     * Take `±n` Projects from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Customers.
+     * Skip the first `n` Projects.
      */
     skip?: number
-    distinct?: CustomerScalarFieldEnum | CustomerScalarFieldEnum[]
+    distinct?: ProjectScalarFieldEnum | ProjectScalarFieldEnum[]
   }
 
   /**
-   * Customer create
+   * Project create
    */
-  export type CustomerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The data needed to create a Project.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Customer.
-     */
-    data: XOR<CustomerCreateInput, CustomerUncheckedCreateInput>
+    data: XOR<ProjectCreateInput, ProjectUncheckedCreateInput>
   }
 
   /**
-   * Customer createMany
+   * Project createMany
    */
-  export type CustomerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Customers.
+     * The data used to create many Projects.
      */
-    data: CustomerCreateManyInput | CustomerCreateManyInput[]
+    data: ProjectCreateManyInput | ProjectCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Customer createManyAndReturn
+   * Project createManyAndReturn
    */
-  export type CustomerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ProjectSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * The data used to create many Customers.
+     * The data used to create many Projects.
      */
-    data: CustomerCreateManyInput | CustomerCreateManyInput[]
+    data: ProjectCreateManyInput | ProjectCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Customer update
+   * Project update
    */
-  export type CustomerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The data needed to update a Project.
      */
-    include?: CustomerInclude<ExtArgs> | null
+    data: XOR<ProjectUpdateInput, ProjectUncheckedUpdateInput>
     /**
-     * The data needed to update a Customer.
+     * Choose, which Project to update.
      */
-    data: XOR<CustomerUpdateInput, CustomerUncheckedUpdateInput>
-    /**
-     * Choose, which Customer to update.
-     */
-    where: CustomerWhereUniqueInput
+    where: ProjectWhereUniqueInput
   }
 
   /**
-   * Customer updateMany
+   * Project updateMany
    */
-  export type CustomerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Customers.
+     * The data used to update Projects.
      */
-    data: XOR<CustomerUpdateManyMutationInput, CustomerUncheckedUpdateManyInput>
+    data: XOR<ProjectUpdateManyMutationInput, ProjectUncheckedUpdateManyInput>
     /**
-     * Filter which Customers to update
+     * Filter which Projects to update
      */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
-     * Limit how many Customers to update.
+     * Limit how many Projects to update.
      */
     limit?: number
   }
 
   /**
-   * Customer updateManyAndReturn
+   * Project updateManyAndReturn
    */
-  export type CustomerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ProjectSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * The data used to update Customers.
+     * The data used to update Projects.
      */
-    data: XOR<CustomerUpdateManyMutationInput, CustomerUncheckedUpdateManyInput>
+    data: XOR<ProjectUpdateManyMutationInput, ProjectUncheckedUpdateManyInput>
     /**
-     * Filter which Customers to update
+     * Filter which Projects to update
      */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
-     * Limit how many Customers to update.
+     * Limit how many Projects to update.
      */
     limit?: number
   }
 
   /**
-   * Customer upsert
+   * Project upsert
    */
-  export type CustomerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * The filter to search for the Project to update in case it exists.
      */
-    include?: CustomerInclude<ExtArgs> | null
+    where: ProjectWhereUniqueInput
     /**
-     * The filter to search for the Customer to update in case it exists.
+     * In case the Project found by the `where` argument doesn't exist, create a new Project with this data.
      */
-    where: CustomerWhereUniqueInput
+    create: XOR<ProjectCreateInput, ProjectUncheckedCreateInput>
     /**
-     * In case the Customer found by the `where` argument doesn't exist, create a new Customer with this data.
+     * In case the Project was found with the provided `where` argument, update it with this data.
      */
-    create: XOR<CustomerCreateInput, CustomerUncheckedCreateInput>
-    /**
-     * In case the Customer was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CustomerUpdateInput, CustomerUncheckedUpdateInput>
+    update: XOR<ProjectUpdateInput, ProjectUncheckedUpdateInput>
   }
 
   /**
-   * Customer delete
+   * Project delete
    */
-  export type CustomerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Customer
+     * Select specific fields to fetch from the Project
      */
-    select?: CustomerSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Customer
+     * Omit specific fields from the Project
      */
-    omit?: CustomerOmit<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
+     * Filter which Project to delete.
      */
-    include?: CustomerInclude<ExtArgs> | null
-    /**
-     * Filter which Customer to delete.
-     */
-    where: CustomerWhereUniqueInput
+    where: ProjectWhereUniqueInput
   }
 
   /**
-   * Customer deleteMany
+   * Project deleteMany
    */
-  export type CustomerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Customers to delete
+     * Filter which Projects to delete
      */
-    where?: CustomerWhereInput
+    where?: ProjectWhereInput
     /**
-     * Limit how many Customers to delete.
+     * Limit how many Projects to delete.
      */
     limit?: number
   }
 
   /**
-   * Customer.Bike
+   * Project without action
    */
-  export type Customer$BikeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ProjectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Bike
+     * Select specific fields to fetch from the Project
      */
-    select?: BikeSelect<ExtArgs> | null
+    select?: ProjectSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Bike
+     * Omit specific fields from the Project
      */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    where?: BikeWhereInput
-    orderBy?: BikeOrderByWithRelationInput | BikeOrderByWithRelationInput[]
-    cursor?: BikeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: BikeScalarFieldEnum | BikeScalarFieldEnum[]
-  }
-
-  /**
-   * Customer without action
-   */
-  export type CustomerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Customer
-     */
-    select?: CustomerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Customer
-     */
-    omit?: CustomerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CustomerInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Bike
-   */
-
-  export type AggregateBike = {
-    _count: BikeCountAggregateOutputType | null
-    _avg: BikeAvgAggregateOutputType | null
-    _sum: BikeSumAggregateOutputType | null
-    _min: BikeMinAggregateOutputType | null
-    _max: BikeMaxAggregateOutputType | null
-  }
-
-  export type BikeAvgAggregateOutputType = {
-    year: number | null
-  }
-
-  export type BikeSumAggregateOutputType = {
-    year: number | null
-  }
-
-  export type BikeMinAggregateOutputType = {
-    id: string | null
-    brand: string | null
-    model: string | null
-    year: number | null
-    customerId: string | null
-  }
-
-  export type BikeMaxAggregateOutputType = {
-    id: string | null
-    brand: string | null
-    model: string | null
-    year: number | null
-    customerId: string | null
-  }
-
-  export type BikeCountAggregateOutputType = {
-    id: number
-    brand: number
-    model: number
-    year: number
-    customerId: number
-    _all: number
-  }
-
-
-  export type BikeAvgAggregateInputType = {
-    year?: true
-  }
-
-  export type BikeSumAggregateInputType = {
-    year?: true
-  }
-
-  export type BikeMinAggregateInputType = {
-    id?: true
-    brand?: true
-    model?: true
-    year?: true
-    customerId?: true
-  }
-
-  export type BikeMaxAggregateInputType = {
-    id?: true
-    brand?: true
-    model?: true
-    year?: true
-    customerId?: true
-  }
-
-  export type BikeCountAggregateInputType = {
-    id?: true
-    brand?: true
-    model?: true
-    year?: true
-    customerId?: true
-    _all?: true
-  }
-
-  export type BikeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Bike to aggregate.
-     */
-    where?: BikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bikes to fetch.
-     */
-    orderBy?: BikeOrderByWithRelationInput | BikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: BikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Bikes
-    **/
-    _count?: true | BikeCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: BikeAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: BikeSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: BikeMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: BikeMaxAggregateInputType
-  }
-
-  export type GetBikeAggregateType<T extends BikeAggregateArgs> = {
-        [P in keyof T & keyof AggregateBike]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateBike[P]>
-      : GetScalarType<T[P], AggregateBike[P]>
-  }
-
-
-
-
-  export type BikeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BikeWhereInput
-    orderBy?: BikeOrderByWithAggregationInput | BikeOrderByWithAggregationInput[]
-    by: BikeScalarFieldEnum[] | BikeScalarFieldEnum
-    having?: BikeScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: BikeCountAggregateInputType | true
-    _avg?: BikeAvgAggregateInputType
-    _sum?: BikeSumAggregateInputType
-    _min?: BikeMinAggregateInputType
-    _max?: BikeMaxAggregateInputType
-  }
-
-  export type BikeGroupByOutputType = {
-    id: string
-    brand: string
-    model: string
-    year: number
-    customerId: string
-    _count: BikeCountAggregateOutputType | null
-    _avg: BikeAvgAggregateOutputType | null
-    _sum: BikeSumAggregateOutputType | null
-    _min: BikeMinAggregateOutputType | null
-    _max: BikeMaxAggregateOutputType | null
-  }
-
-  type GetBikeGroupByPayload<T extends BikeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<BikeGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof BikeGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], BikeGroupByOutputType[P]>
-            : GetScalarType<T[P], BikeGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type BikeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    brand?: boolean
-    model?: boolean
-    year?: boolean
-    customerId?: boolean
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-    service?: boolean | Bike$serviceArgs<ExtArgs>
-  }, ExtArgs["result"]["bike"]>
-
-  export type BikeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    brand?: boolean
-    model?: boolean
-    year?: boolean
-    customerId?: boolean
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bike"]>
-
-  export type BikeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    brand?: boolean
-    model?: boolean
-    year?: boolean
-    customerId?: boolean
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["bike"]>
-
-  export type BikeSelectScalar = {
-    id?: boolean
-    brand?: boolean
-    model?: boolean
-    year?: boolean
-    customerId?: boolean
-  }
-
-  export type BikeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "brand" | "model" | "year" | "customerId", ExtArgs["result"]["bike"]>
-  export type BikeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-    service?: boolean | Bike$serviceArgs<ExtArgs>
-  }
-  export type BikeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-  }
-  export type BikeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    customer?: boolean | CustomerDefaultArgs<ExtArgs>
-  }
-
-  export type $BikePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Bike"
-    objects: {
-      customer: Prisma.$CustomerPayload<ExtArgs>
-      service: Prisma.$servicePayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      brand: string
-      model: string
-      year: number
-      customerId: string
-    }, ExtArgs["result"]["bike"]>
-    composites: {}
-  }
-
-  type BikeGetPayload<S extends boolean | null | undefined | BikeDefaultArgs> = $Result.GetResult<Prisma.$BikePayload, S>
-
-  type BikeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BikeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: BikeCountAggregateInputType | true
-    }
-
-  export interface BikeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Bike'], meta: { name: 'Bike' } }
-    /**
-     * Find zero or one Bike that matches the filter.
-     * @param {BikeFindUniqueArgs} args - Arguments to find a Bike
-     * @example
-     * // Get one Bike
-     * const bike = await prisma.bike.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends BikeFindUniqueArgs>(args: SelectSubset<T, BikeFindUniqueArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Bike that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {BikeFindUniqueOrThrowArgs} args - Arguments to find a Bike
-     * @example
-     * // Get one Bike
-     * const bike = await prisma.bike.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends BikeFindUniqueOrThrowArgs>(args: SelectSubset<T, BikeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Bike that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeFindFirstArgs} args - Arguments to find a Bike
-     * @example
-     * // Get one Bike
-     * const bike = await prisma.bike.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends BikeFindFirstArgs>(args?: SelectSubset<T, BikeFindFirstArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Bike that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeFindFirstOrThrowArgs} args - Arguments to find a Bike
-     * @example
-     * // Get one Bike
-     * const bike = await prisma.bike.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends BikeFindFirstOrThrowArgs>(args?: SelectSubset<T, BikeFindFirstOrThrowArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Bikes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Bikes
-     * const bikes = await prisma.bike.findMany()
-     * 
-     * // Get first 10 Bikes
-     * const bikes = await prisma.bike.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const bikeWithIdOnly = await prisma.bike.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends BikeFindManyArgs>(args?: SelectSubset<T, BikeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Bike.
-     * @param {BikeCreateArgs} args - Arguments to create a Bike.
-     * @example
-     * // Create one Bike
-     * const Bike = await prisma.bike.create({
-     *   data: {
-     *     // ... data to create a Bike
-     *   }
-     * })
-     * 
-     */
-    create<T extends BikeCreateArgs>(args: SelectSubset<T, BikeCreateArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Bikes.
-     * @param {BikeCreateManyArgs} args - Arguments to create many Bikes.
-     * @example
-     * // Create many Bikes
-     * const bike = await prisma.bike.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends BikeCreateManyArgs>(args?: SelectSubset<T, BikeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Bikes and returns the data saved in the database.
-     * @param {BikeCreateManyAndReturnArgs} args - Arguments to create many Bikes.
-     * @example
-     * // Create many Bikes
-     * const bike = await prisma.bike.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Bikes and only return the `id`
-     * const bikeWithIdOnly = await prisma.bike.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends BikeCreateManyAndReturnArgs>(args?: SelectSubset<T, BikeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Bike.
-     * @param {BikeDeleteArgs} args - Arguments to delete one Bike.
-     * @example
-     * // Delete one Bike
-     * const Bike = await prisma.bike.delete({
-     *   where: {
-     *     // ... filter to delete one Bike
-     *   }
-     * })
-     * 
-     */
-    delete<T extends BikeDeleteArgs>(args: SelectSubset<T, BikeDeleteArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Bike.
-     * @param {BikeUpdateArgs} args - Arguments to update one Bike.
-     * @example
-     * // Update one Bike
-     * const bike = await prisma.bike.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends BikeUpdateArgs>(args: SelectSubset<T, BikeUpdateArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Bikes.
-     * @param {BikeDeleteManyArgs} args - Arguments to filter Bikes to delete.
-     * @example
-     * // Delete a few Bikes
-     * const { count } = await prisma.bike.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends BikeDeleteManyArgs>(args?: SelectSubset<T, BikeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Bikes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Bikes
-     * const bike = await prisma.bike.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends BikeUpdateManyArgs>(args: SelectSubset<T, BikeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Bikes and returns the data updated in the database.
-     * @param {BikeUpdateManyAndReturnArgs} args - Arguments to update many Bikes.
-     * @example
-     * // Update many Bikes
-     * const bike = await prisma.bike.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Bikes and only return the `id`
-     * const bikeWithIdOnly = await prisma.bike.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends BikeUpdateManyAndReturnArgs>(args: SelectSubset<T, BikeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Bike.
-     * @param {BikeUpsertArgs} args - Arguments to update or create a Bike.
-     * @example
-     * // Update or create a Bike
-     * const bike = await prisma.bike.upsert({
-     *   create: {
-     *     // ... data to create a Bike
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Bike we want to update
-     *   }
-     * })
-     */
-    upsert<T extends BikeUpsertArgs>(args: SelectSubset<T, BikeUpsertArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Bikes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeCountArgs} args - Arguments to filter Bikes to count.
-     * @example
-     * // Count the number of Bikes
-     * const count = await prisma.bike.count({
-     *   where: {
-     *     // ... the filter for the Bikes we want to count
-     *   }
-     * })
-    **/
-    count<T extends BikeCountArgs>(
-      args?: Subset<T, BikeCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], BikeCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Bike.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends BikeAggregateArgs>(args: Subset<T, BikeAggregateArgs>): Prisma.PrismaPromise<GetBikeAggregateType<T>>
-
-    /**
-     * Group by Bike.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {BikeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends BikeGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BikeGroupByArgs['orderBy'] }
-        : { orderBy?: BikeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, BikeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBikeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Bike model
-   */
-  readonly fields: BikeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Bike.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__BikeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    customer<T extends CustomerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CustomerDefaultArgs<ExtArgs>>): Prisma__CustomerClient<$Result.GetResult<Prisma.$CustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    service<T extends Bike$serviceArgs<ExtArgs> = {}>(args?: Subset<T, Bike$serviceArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Bike model
-   */
-  interface BikeFieldRefs {
-    readonly id: FieldRef<"Bike", 'String'>
-    readonly brand: FieldRef<"Bike", 'String'>
-    readonly model: FieldRef<"Bike", 'String'>
-    readonly year: FieldRef<"Bike", 'Int'>
-    readonly customerId: FieldRef<"Bike", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Bike findUnique
-   */
-  export type BikeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter, which Bike to fetch.
-     */
-    where: BikeWhereUniqueInput
-  }
-
-  /**
-   * Bike findUniqueOrThrow
-   */
-  export type BikeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter, which Bike to fetch.
-     */
-    where: BikeWhereUniqueInput
-  }
-
-  /**
-   * Bike findFirst
-   */
-  export type BikeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter, which Bike to fetch.
-     */
-    where?: BikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bikes to fetch.
-     */
-    orderBy?: BikeOrderByWithRelationInput | BikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Bikes.
-     */
-    cursor?: BikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Bikes.
-     */
-    distinct?: BikeScalarFieldEnum | BikeScalarFieldEnum[]
-  }
-
-  /**
-   * Bike findFirstOrThrow
-   */
-  export type BikeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter, which Bike to fetch.
-     */
-    where?: BikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bikes to fetch.
-     */
-    orderBy?: BikeOrderByWithRelationInput | BikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Bikes.
-     */
-    cursor?: BikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bikes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Bikes.
-     */
-    distinct?: BikeScalarFieldEnum | BikeScalarFieldEnum[]
-  }
-
-  /**
-   * Bike findMany
-   */
-  export type BikeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter, which Bikes to fetch.
-     */
-    where?: BikeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Bikes to fetch.
-     */
-    orderBy?: BikeOrderByWithRelationInput | BikeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Bikes.
-     */
-    cursor?: BikeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Bikes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Bikes.
-     */
-    skip?: number
-    distinct?: BikeScalarFieldEnum | BikeScalarFieldEnum[]
-  }
-
-  /**
-   * Bike create
-   */
-  export type BikeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Bike.
-     */
-    data: XOR<BikeCreateInput, BikeUncheckedCreateInput>
-  }
-
-  /**
-   * Bike createMany
-   */
-  export type BikeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Bikes.
-     */
-    data: BikeCreateManyInput | BikeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Bike createManyAndReturn
-   */
-  export type BikeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * The data used to create many Bikes.
-     */
-    data: BikeCreateManyInput | BikeCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Bike update
-   */
-  export type BikeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Bike.
-     */
-    data: XOR<BikeUpdateInput, BikeUncheckedUpdateInput>
-    /**
-     * Choose, which Bike to update.
-     */
-    where: BikeWhereUniqueInput
-  }
-
-  /**
-   * Bike updateMany
-   */
-  export type BikeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Bikes.
-     */
-    data: XOR<BikeUpdateManyMutationInput, BikeUncheckedUpdateManyInput>
-    /**
-     * Filter which Bikes to update
-     */
-    where?: BikeWhereInput
-    /**
-     * Limit how many Bikes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Bike updateManyAndReturn
-   */
-  export type BikeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * The data used to update Bikes.
-     */
-    data: XOR<BikeUpdateManyMutationInput, BikeUncheckedUpdateManyInput>
-    /**
-     * Filter which Bikes to update
-     */
-    where?: BikeWhereInput
-    /**
-     * Limit how many Bikes to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Bike upsert
-   */
-  export type BikeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Bike to update in case it exists.
-     */
-    where: BikeWhereUniqueInput
-    /**
-     * In case the Bike found by the `where` argument doesn't exist, create a new Bike with this data.
-     */
-    create: XOR<BikeCreateInput, BikeUncheckedCreateInput>
-    /**
-     * In case the Bike was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<BikeUpdateInput, BikeUncheckedUpdateInput>
-  }
-
-  /**
-   * Bike delete
-   */
-  export type BikeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-    /**
-     * Filter which Bike to delete.
-     */
-    where: BikeWhereUniqueInput
-  }
-
-  /**
-   * Bike deleteMany
-   */
-  export type BikeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Bikes to delete
-     */
-    where?: BikeWhereInput
-    /**
-     * Limit how many Bikes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Bike.service
-   */
-  export type Bike$serviceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    where?: serviceWhereInput
-  }
-
-  /**
-   * Bike without action
-   */
-  export type BikeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Bike
-     */
-    select?: BikeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Bike
-     */
-    omit?: BikeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: BikeInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model service
-   */
-
-  export type AggregateService = {
-    _count: ServiceCountAggregateOutputType | null
-    _min: ServiceMinAggregateOutputType | null
-    _max: ServiceMaxAggregateOutputType | null
-  }
-
-  export type ServiceMinAggregateOutputType = {
-    id: string | null
-    bikeId: string | null
-    serviceDate: Date | null
-    completionDate: Date | null
-    description: string | null
-    status: $Enums.serviceStatus | null
-  }
-
-  export type ServiceMaxAggregateOutputType = {
-    id: string | null
-    bikeId: string | null
-    serviceDate: Date | null
-    completionDate: Date | null
-    description: string | null
-    status: $Enums.serviceStatus | null
-  }
-
-  export type ServiceCountAggregateOutputType = {
-    id: number
-    bikeId: number
-    serviceDate: number
-    completionDate: number
-    description: number
-    status: number
-    _all: number
-  }
-
-
-  export type ServiceMinAggregateInputType = {
-    id?: true
-    bikeId?: true
-    serviceDate?: true
-    completionDate?: true
-    description?: true
-    status?: true
-  }
-
-  export type ServiceMaxAggregateInputType = {
-    id?: true
-    bikeId?: true
-    serviceDate?: true
-    completionDate?: true
-    description?: true
-    status?: true
-  }
-
-  export type ServiceCountAggregateInputType = {
-    id?: true
-    bikeId?: true
-    serviceDate?: true
-    completionDate?: true
-    description?: true
-    status?: true
-    _all?: true
-  }
-
-  export type ServiceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which service to aggregate.
-     */
-    where?: serviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: serviceOrderByWithRelationInput | serviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: serviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned services
-    **/
-    _count?: true | ServiceCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ServiceMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ServiceMaxAggregateInputType
-  }
-
-  export type GetServiceAggregateType<T extends ServiceAggregateArgs> = {
-        [P in keyof T & keyof AggregateService]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateService[P]>
-      : GetScalarType<T[P], AggregateService[P]>
-  }
-
-
-
-
-  export type serviceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: serviceWhereInput
-    orderBy?: serviceOrderByWithAggregationInput | serviceOrderByWithAggregationInput[]
-    by: ServiceScalarFieldEnum[] | ServiceScalarFieldEnum
-    having?: serviceScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ServiceCountAggregateInputType | true
-    _min?: ServiceMinAggregateInputType
-    _max?: ServiceMaxAggregateInputType
-  }
-
-  export type ServiceGroupByOutputType = {
-    id: string
-    bikeId: string
-    serviceDate: Date
-    completionDate: Date | null
-    description: string
-    status: $Enums.serviceStatus
-    _count: ServiceCountAggregateOutputType | null
-    _min: ServiceMinAggregateOutputType | null
-    _max: ServiceMaxAggregateOutputType | null
-  }
-
-  type GetServiceGroupByPayload<T extends serviceGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ServiceGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ServiceGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ServiceGroupByOutputType[P]>
-            : GetScalarType<T[P], ServiceGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type serviceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bikeId?: boolean
-    serviceDate?: boolean
-    completionDate?: boolean
-    description?: boolean
-    status?: boolean
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["service"]>
-
-  export type serviceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bikeId?: boolean
-    serviceDate?: boolean
-    completionDate?: boolean
-    description?: boolean
-    status?: boolean
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["service"]>
-
-  export type serviceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    bikeId?: boolean
-    serviceDate?: boolean
-    completionDate?: boolean
-    description?: boolean
-    status?: boolean
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["service"]>
-
-  export type serviceSelectScalar = {
-    id?: boolean
-    bikeId?: boolean
-    serviceDate?: boolean
-    completionDate?: boolean
-    description?: boolean
-    status?: boolean
-  }
-
-  export type serviceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bikeId" | "serviceDate" | "completionDate" | "description" | "status", ExtArgs["result"]["service"]>
-  export type serviceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }
-  export type serviceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }
-  export type serviceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    bike?: boolean | BikeDefaultArgs<ExtArgs>
-  }
-
-  export type $servicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "service"
-    objects: {
-      bike: Prisma.$BikePayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      bikeId: string
-      serviceDate: Date
-      completionDate: Date | null
-      description: string
-      status: $Enums.serviceStatus
-    }, ExtArgs["result"]["service"]>
-    composites: {}
-  }
-
-  type serviceGetPayload<S extends boolean | null | undefined | serviceDefaultArgs> = $Result.GetResult<Prisma.$servicePayload, S>
-
-  type serviceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<serviceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ServiceCountAggregateInputType | true
-    }
-
-  export interface serviceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['service'], meta: { name: 'service' } }
-    /**
-     * Find zero or one Service that matches the filter.
-     * @param {serviceFindUniqueArgs} args - Arguments to find a Service
-     * @example
-     * // Get one Service
-     * const service = await prisma.service.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends serviceFindUniqueArgs>(args: SelectSubset<T, serviceFindUniqueArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Service that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {serviceFindUniqueOrThrowArgs} args - Arguments to find a Service
-     * @example
-     * // Get one Service
-     * const service = await prisma.service.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends serviceFindUniqueOrThrowArgs>(args: SelectSubset<T, serviceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Service that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceFindFirstArgs} args - Arguments to find a Service
-     * @example
-     * // Get one Service
-     * const service = await prisma.service.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends serviceFindFirstArgs>(args?: SelectSubset<T, serviceFindFirstArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Service that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceFindFirstOrThrowArgs} args - Arguments to find a Service
-     * @example
-     * // Get one Service
-     * const service = await prisma.service.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends serviceFindFirstOrThrowArgs>(args?: SelectSubset<T, serviceFindFirstOrThrowArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Services that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Services
-     * const services = await prisma.service.findMany()
-     * 
-     * // Get first 10 Services
-     * const services = await prisma.service.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const serviceWithIdOnly = await prisma.service.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends serviceFindManyArgs>(args?: SelectSubset<T, serviceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Service.
-     * @param {serviceCreateArgs} args - Arguments to create a Service.
-     * @example
-     * // Create one Service
-     * const Service = await prisma.service.create({
-     *   data: {
-     *     // ... data to create a Service
-     *   }
-     * })
-     * 
-     */
-    create<T extends serviceCreateArgs>(args: SelectSubset<T, serviceCreateArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Services.
-     * @param {serviceCreateManyArgs} args - Arguments to create many Services.
-     * @example
-     * // Create many Services
-     * const service = await prisma.service.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends serviceCreateManyArgs>(args?: SelectSubset<T, serviceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Services and returns the data saved in the database.
-     * @param {serviceCreateManyAndReturnArgs} args - Arguments to create many Services.
-     * @example
-     * // Create many Services
-     * const service = await prisma.service.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Services and only return the `id`
-     * const serviceWithIdOnly = await prisma.service.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends serviceCreateManyAndReturnArgs>(args?: SelectSubset<T, serviceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Service.
-     * @param {serviceDeleteArgs} args - Arguments to delete one Service.
-     * @example
-     * // Delete one Service
-     * const Service = await prisma.service.delete({
-     *   where: {
-     *     // ... filter to delete one Service
-     *   }
-     * })
-     * 
-     */
-    delete<T extends serviceDeleteArgs>(args: SelectSubset<T, serviceDeleteArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Service.
-     * @param {serviceUpdateArgs} args - Arguments to update one Service.
-     * @example
-     * // Update one Service
-     * const service = await prisma.service.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends serviceUpdateArgs>(args: SelectSubset<T, serviceUpdateArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Services.
-     * @param {serviceDeleteManyArgs} args - Arguments to filter Services to delete.
-     * @example
-     * // Delete a few Services
-     * const { count } = await prisma.service.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends serviceDeleteManyArgs>(args?: SelectSubset<T, serviceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Services
-     * const service = await prisma.service.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends serviceUpdateManyArgs>(args: SelectSubset<T, serviceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Services and returns the data updated in the database.
-     * @param {serviceUpdateManyAndReturnArgs} args - Arguments to update many Services.
-     * @example
-     * // Update many Services
-     * const service = await prisma.service.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Services and only return the `id`
-     * const serviceWithIdOnly = await prisma.service.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends serviceUpdateManyAndReturnArgs>(args: SelectSubset<T, serviceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Service.
-     * @param {serviceUpsertArgs} args - Arguments to update or create a Service.
-     * @example
-     * // Update or create a Service
-     * const service = await prisma.service.upsert({
-     *   create: {
-     *     // ... data to create a Service
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Service we want to update
-     *   }
-     * })
-     */
-    upsert<T extends serviceUpsertArgs>(args: SelectSubset<T, serviceUpsertArgs<ExtArgs>>): Prisma__serviceClient<$Result.GetResult<Prisma.$servicePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Services.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceCountArgs} args - Arguments to filter Services to count.
-     * @example
-     * // Count the number of Services
-     * const count = await prisma.service.count({
-     *   where: {
-     *     // ... the filter for the Services we want to count
-     *   }
-     * })
-    **/
-    count<T extends serviceCountArgs>(
-      args?: Subset<T, serviceCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ServiceCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Service.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ServiceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ServiceAggregateArgs>(args: Subset<T, ServiceAggregateArgs>): Prisma.PrismaPromise<GetServiceAggregateType<T>>
-
-    /**
-     * Group by Service.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {serviceGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends serviceGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: serviceGroupByArgs['orderBy'] }
-        : { orderBy?: serviceGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, serviceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the service model
-   */
-  readonly fields: serviceFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for service.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__serviceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    bike<T extends BikeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BikeDefaultArgs<ExtArgs>>): Prisma__BikeClient<$Result.GetResult<Prisma.$BikePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the service model
-   */
-  interface serviceFieldRefs {
-    readonly id: FieldRef<"service", 'String'>
-    readonly bikeId: FieldRef<"service", 'String'>
-    readonly serviceDate: FieldRef<"service", 'DateTime'>
-    readonly completionDate: FieldRef<"service", 'DateTime'>
-    readonly description: FieldRef<"service", 'String'>
-    readonly status: FieldRef<"service", 'serviceStatus'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * service findUnique
-   */
-  export type serviceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter, which service to fetch.
-     */
-    where: serviceWhereUniqueInput
-  }
-
-  /**
-   * service findUniqueOrThrow
-   */
-  export type serviceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter, which service to fetch.
-     */
-    where: serviceWhereUniqueInput
-  }
-
-  /**
-   * service findFirst
-   */
-  export type serviceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter, which service to fetch.
-     */
-    where?: serviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: serviceOrderByWithRelationInput | serviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for services.
-     */
-    cursor?: serviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of services.
-     */
-    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
-  }
-
-  /**
-   * service findFirstOrThrow
-   */
-  export type serviceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter, which service to fetch.
-     */
-    where?: serviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: serviceOrderByWithRelationInput | serviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for services.
-     */
-    cursor?: serviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of services.
-     */
-    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
-  }
-
-  /**
-   * service findMany
-   */
-  export type serviceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter, which services to fetch.
-     */
-    where?: serviceWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of services to fetch.
-     */
-    orderBy?: serviceOrderByWithRelationInput | serviceOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing services.
-     */
-    cursor?: serviceWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` services from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` services.
-     */
-    skip?: number
-    distinct?: ServiceScalarFieldEnum | ServiceScalarFieldEnum[]
-  }
-
-  /**
-   * service create
-   */
-  export type serviceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * The data needed to create a service.
-     */
-    data: XOR<serviceCreateInput, serviceUncheckedCreateInput>
-  }
-
-  /**
-   * service createMany
-   */
-  export type serviceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many services.
-     */
-    data: serviceCreateManyInput | serviceCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * service createManyAndReturn
-   */
-  export type serviceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * The data used to create many services.
-     */
-    data: serviceCreateManyInput | serviceCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * service update
-   */
-  export type serviceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * The data needed to update a service.
-     */
-    data: XOR<serviceUpdateInput, serviceUncheckedUpdateInput>
-    /**
-     * Choose, which service to update.
-     */
-    where: serviceWhereUniqueInput
-  }
-
-  /**
-   * service updateMany
-   */
-  export type serviceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update services.
-     */
-    data: XOR<serviceUpdateManyMutationInput, serviceUncheckedUpdateManyInput>
-    /**
-     * Filter which services to update
-     */
-    where?: serviceWhereInput
-    /**
-     * Limit how many services to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * service updateManyAndReturn
-   */
-  export type serviceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * The data used to update services.
-     */
-    data: XOR<serviceUpdateManyMutationInput, serviceUncheckedUpdateManyInput>
-    /**
-     * Filter which services to update
-     */
-    where?: serviceWhereInput
-    /**
-     * Limit how many services to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * service upsert
-   */
-  export type serviceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * The filter to search for the service to update in case it exists.
-     */
-    where: serviceWhereUniqueInput
-    /**
-     * In case the service found by the `where` argument doesn't exist, create a new service with this data.
-     */
-    create: XOR<serviceCreateInput, serviceUncheckedCreateInput>
-    /**
-     * In case the service was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<serviceUpdateInput, serviceUncheckedUpdateInput>
-  }
-
-  /**
-   * service delete
-   */
-  export type serviceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
-    /**
-     * Filter which service to delete.
-     */
-    where: serviceWhereUniqueInput
-  }
-
-  /**
-   * service deleteMany
-   */
-  export type serviceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which services to delete
-     */
-    where?: serviceWhereInput
-    /**
-     * Limit how many services to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * service without action
-   */
-  export type serviceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the service
-     */
-    select?: serviceSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the service
-     */
-    omit?: serviceOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: serviceInclude<ExtArgs> | null
+    omit?: ProjectOmit<ExtArgs> | null
   }
 
 
@@ -4382,39 +1913,19 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const CustomerScalarFieldEnum: {
+  export const ProjectScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    email: 'email',
-    phone: 'phone',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
-
-
-  export const BikeScalarFieldEnum: {
-    id: 'id',
-    brand: 'brand',
-    model: 'model',
-    year: 'year',
-    customerId: 'customerId'
-  };
-
-  export type BikeScalarFieldEnum = (typeof BikeScalarFieldEnum)[keyof typeof BikeScalarFieldEnum]
-
-
-  export const ServiceScalarFieldEnum: {
-    id: 'id',
-    bikeId: 'bikeId',
-    serviceDate: 'serviceDate',
-    completionDate: 'completionDate',
+    bannerImage: 'bannerImage',
     description: 'description',
-    status: 'status'
+    liveLink: 'liveLink',
+    githubLink: 'githubLink',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    images: 'images'
   };
 
-  export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+  export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4431,14 +1942,6 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4486,405 +1989,165 @@ export namespace Prisma {
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
-
-
-  /**
-   * Reference to a field of type 'serviceStatus'
-   */
-  export type EnumserviceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'serviceStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'serviceStatus[]'
-   */
-  export type ListEnumserviceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'serviceStatus[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
   /**
    * Deep Input Types
    */
 
 
-  export type CustomerWhereInput = {
-    AND?: CustomerWhereInput | CustomerWhereInput[]
-    OR?: CustomerWhereInput[]
-    NOT?: CustomerWhereInput | CustomerWhereInput[]
-    id?: StringFilter<"Customer"> | string
-    name?: StringFilter<"Customer"> | string
-    email?: StringFilter<"Customer"> | string
-    phone?: StringFilter<"Customer"> | string
-    createdAt?: DateTimeFilter<"Customer"> | Date | string
-    updatedAt?: DateTimeFilter<"Customer"> | Date | string
-    Bike?: BikeListRelationFilter
+  export type ProjectWhereInput = {
+    AND?: ProjectWhereInput | ProjectWhereInput[]
+    OR?: ProjectWhereInput[]
+    NOT?: ProjectWhereInput | ProjectWhereInput[]
+    id?: StringFilter<"Project"> | string
+    name?: StringFilter<"Project"> | string
+    bannerImage?: StringFilter<"Project"> | string
+    description?: StringFilter<"Project"> | string
+    liveLink?: StringFilter<"Project"> | string
+    githubLink?: StringFilter<"Project"> | string
+    createdAt?: DateTimeFilter<"Project"> | Date | string
+    updatedAt?: DateTimeFilter<"Project"> | Date | string
+    images?: StringNullableListFilter<"Project">
   }
 
-  export type CustomerOrderByWithRelationInput = {
+  export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
+    bannerImage?: SortOrder
+    description?: SortOrder
+    liveLink?: SortOrder
+    githubLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    Bike?: BikeOrderByRelationAggregateInput
+    images?: SortOrder
   }
 
-  export type CustomerWhereUniqueInput = Prisma.AtLeast<{
+  export type ProjectWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    email?: string
-    AND?: CustomerWhereInput | CustomerWhereInput[]
-    OR?: CustomerWhereInput[]
-    NOT?: CustomerWhereInput | CustomerWhereInput[]
-    name?: StringFilter<"Customer"> | string
-    phone?: StringFilter<"Customer"> | string
-    createdAt?: DateTimeFilter<"Customer"> | Date | string
-    updatedAt?: DateTimeFilter<"Customer"> | Date | string
-    Bike?: BikeListRelationFilter
-  }, "id" | "email">
+    AND?: ProjectWhereInput | ProjectWhereInput[]
+    OR?: ProjectWhereInput[]
+    NOT?: ProjectWhereInput | ProjectWhereInput[]
+    name?: StringFilter<"Project"> | string
+    bannerImage?: StringFilter<"Project"> | string
+    description?: StringFilter<"Project"> | string
+    liveLink?: StringFilter<"Project"> | string
+    githubLink?: StringFilter<"Project"> | string
+    createdAt?: DateTimeFilter<"Project"> | Date | string
+    updatedAt?: DateTimeFilter<"Project"> | Date | string
+    images?: StringNullableListFilter<"Project">
+  }, "id">
 
-  export type CustomerOrderByWithAggregationInput = {
+  export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
+    bannerImage?: SortOrder
+    description?: SortOrder
+    liveLink?: SortOrder
+    githubLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: CustomerCountOrderByAggregateInput
-    _max?: CustomerMaxOrderByAggregateInput
-    _min?: CustomerMinOrderByAggregateInput
+    images?: SortOrder
+    _count?: ProjectCountOrderByAggregateInput
+    _max?: ProjectMaxOrderByAggregateInput
+    _min?: ProjectMinOrderByAggregateInput
   }
 
-  export type CustomerScalarWhereWithAggregatesInput = {
-    AND?: CustomerScalarWhereWithAggregatesInput | CustomerScalarWhereWithAggregatesInput[]
-    OR?: CustomerScalarWhereWithAggregatesInput[]
-    NOT?: CustomerScalarWhereWithAggregatesInput | CustomerScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Customer"> | string
-    name?: StringWithAggregatesFilter<"Customer"> | string
-    email?: StringWithAggregatesFilter<"Customer"> | string
-    phone?: StringWithAggregatesFilter<"Customer"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
+  export type ProjectScalarWhereWithAggregatesInput = {
+    AND?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
+    OR?: ProjectScalarWhereWithAggregatesInput[]
+    NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Project"> | string
+    name?: StringWithAggregatesFilter<"Project"> | string
+    bannerImage?: StringWithAggregatesFilter<"Project"> | string
+    description?: StringWithAggregatesFilter<"Project"> | string
+    liveLink?: StringWithAggregatesFilter<"Project"> | string
+    githubLink?: StringWithAggregatesFilter<"Project"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
+    images?: StringNullableListFilter<"Project">
   }
 
-  export type BikeWhereInput = {
-    AND?: BikeWhereInput | BikeWhereInput[]
-    OR?: BikeWhereInput[]
-    NOT?: BikeWhereInput | BikeWhereInput[]
-    id?: StringFilter<"Bike"> | string
-    brand?: StringFilter<"Bike"> | string
-    model?: StringFilter<"Bike"> | string
-    year?: IntFilter<"Bike"> | number
-    customerId?: StringFilter<"Bike"> | string
-    customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
-    service?: XOR<ServiceNullableScalarRelationFilter, serviceWhereInput> | null
-  }
-
-  export type BikeOrderByWithRelationInput = {
-    id?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    year?: SortOrder
-    customerId?: SortOrder
-    customer?: CustomerOrderByWithRelationInput
-    service?: serviceOrderByWithRelationInput
-  }
-
-  export type BikeWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    customerId?: string
-    AND?: BikeWhereInput | BikeWhereInput[]
-    OR?: BikeWhereInput[]
-    NOT?: BikeWhereInput | BikeWhereInput[]
-    brand?: StringFilter<"Bike"> | string
-    model?: StringFilter<"Bike"> | string
-    year?: IntFilter<"Bike"> | number
-    customer?: XOR<CustomerScalarRelationFilter, CustomerWhereInput>
-    service?: XOR<ServiceNullableScalarRelationFilter, serviceWhereInput> | null
-  }, "id" | "customerId">
-
-  export type BikeOrderByWithAggregationInput = {
-    id?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    year?: SortOrder
-    customerId?: SortOrder
-    _count?: BikeCountOrderByAggregateInput
-    _avg?: BikeAvgOrderByAggregateInput
-    _max?: BikeMaxOrderByAggregateInput
-    _min?: BikeMinOrderByAggregateInput
-    _sum?: BikeSumOrderByAggregateInput
-  }
-
-  export type BikeScalarWhereWithAggregatesInput = {
-    AND?: BikeScalarWhereWithAggregatesInput | BikeScalarWhereWithAggregatesInput[]
-    OR?: BikeScalarWhereWithAggregatesInput[]
-    NOT?: BikeScalarWhereWithAggregatesInput | BikeScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Bike"> | string
-    brand?: StringWithAggregatesFilter<"Bike"> | string
-    model?: StringWithAggregatesFilter<"Bike"> | string
-    year?: IntWithAggregatesFilter<"Bike"> | number
-    customerId?: StringWithAggregatesFilter<"Bike"> | string
-  }
-
-  export type serviceWhereInput = {
-    AND?: serviceWhereInput | serviceWhereInput[]
-    OR?: serviceWhereInput[]
-    NOT?: serviceWhereInput | serviceWhereInput[]
-    id?: StringFilter<"service"> | string
-    bikeId?: StringFilter<"service"> | string
-    serviceDate?: DateTimeFilter<"service"> | Date | string
-    completionDate?: DateTimeNullableFilter<"service"> | Date | string | null
-    description?: StringFilter<"service"> | string
-    status?: EnumserviceStatusFilter<"service"> | $Enums.serviceStatus
-    bike?: XOR<BikeScalarRelationFilter, BikeWhereInput>
-  }
-
-  export type serviceOrderByWithRelationInput = {
-    id?: SortOrder
-    bikeId?: SortOrder
-    serviceDate?: SortOrder
-    completionDate?: SortOrderInput | SortOrder
-    description?: SortOrder
-    status?: SortOrder
-    bike?: BikeOrderByWithRelationInput
-  }
-
-  export type serviceWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    bikeId?: string
-    AND?: serviceWhereInput | serviceWhereInput[]
-    OR?: serviceWhereInput[]
-    NOT?: serviceWhereInput | serviceWhereInput[]
-    serviceDate?: DateTimeFilter<"service"> | Date | string
-    completionDate?: DateTimeNullableFilter<"service"> | Date | string | null
-    description?: StringFilter<"service"> | string
-    status?: EnumserviceStatusFilter<"service"> | $Enums.serviceStatus
-    bike?: XOR<BikeScalarRelationFilter, BikeWhereInput>
-  }, "id" | "bikeId">
-
-  export type serviceOrderByWithAggregationInput = {
-    id?: SortOrder
-    bikeId?: SortOrder
-    serviceDate?: SortOrder
-    completionDate?: SortOrderInput | SortOrder
-    description?: SortOrder
-    status?: SortOrder
-    _count?: serviceCountOrderByAggregateInput
-    _max?: serviceMaxOrderByAggregateInput
-    _min?: serviceMinOrderByAggregateInput
-  }
-
-  export type serviceScalarWhereWithAggregatesInput = {
-    AND?: serviceScalarWhereWithAggregatesInput | serviceScalarWhereWithAggregatesInput[]
-    OR?: serviceScalarWhereWithAggregatesInput[]
-    NOT?: serviceScalarWhereWithAggregatesInput | serviceScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"service"> | string
-    bikeId?: StringWithAggregatesFilter<"service"> | string
-    serviceDate?: DateTimeWithAggregatesFilter<"service"> | Date | string
-    completionDate?: DateTimeNullableWithAggregatesFilter<"service"> | Date | string | null
-    description?: StringWithAggregatesFilter<"service"> | string
-    status?: EnumserviceStatusWithAggregatesFilter<"service"> | $Enums.serviceStatus
-  }
-
-  export type CustomerCreateInput = {
+  export type ProjectCreateInput = {
     id?: string
     name: string
-    email: string
-    phone: string
+    bannerImage: string
+    description: string
+    liveLink: string
+    githubLink: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Bike?: BikeCreateNestedManyWithoutCustomerInput
+    images?: ProjectCreateimagesInput | string[]
   }
 
-  export type CustomerUncheckedCreateInput = {
+  export type ProjectUncheckedCreateInput = {
     id?: string
     name: string
-    email: string
-    phone: string
+    bannerImage: string
+    description: string
+    liveLink: string
+    githubLink: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Bike?: BikeUncheckedCreateNestedManyWithoutCustomerInput
+    images?: ProjectCreateimagesInput | string[]
   }
 
-  export type CustomerUpdateInput = {
+  export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    bannerImage?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    liveLink?: StringFieldUpdateOperationsInput | string
+    githubLink?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Bike?: BikeUpdateManyWithoutCustomerNestedInput
+    images?: ProjectUpdateimagesInput | string[]
   }
 
-  export type CustomerUncheckedUpdateInput = {
+  export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    bannerImage?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    liveLink?: StringFieldUpdateOperationsInput | string
+    githubLink?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Bike?: BikeUncheckedUpdateManyWithoutCustomerNestedInput
+    images?: ProjectUpdateimagesInput | string[]
   }
 
-  export type CustomerCreateManyInput = {
+  export type ProjectCreateManyInput = {
     id?: string
     name: string
-    email: string
-    phone: string
+    bannerImage: string
+    description: string
+    liveLink: string
+    githubLink: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    images?: ProjectCreateimagesInput | string[]
   }
 
-  export type CustomerUpdateManyMutationInput = {
+  export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    bannerImage?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    liveLink?: StringFieldUpdateOperationsInput | string
+    githubLink?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: ProjectUpdateimagesInput | string[]
   }
 
-  export type CustomerUncheckedUpdateManyInput = {
+  export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
+    bannerImage?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    liveLink?: StringFieldUpdateOperationsInput | string
+    githubLink?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type BikeCreateInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    customer: CustomerCreateNestedOneWithoutBikeInput
-    service?: serviceCreateNestedOneWithoutBikeInput
-  }
-
-  export type BikeUncheckedCreateInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    customerId: string
-    service?: serviceUncheckedCreateNestedOneWithoutBikeInput
-  }
-
-  export type BikeUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    customer?: CustomerUpdateOneRequiredWithoutBikeNestedInput
-    service?: serviceUpdateOneWithoutBikeNestedInput
-  }
-
-  export type BikeUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    customerId?: StringFieldUpdateOperationsInput | string
-    service?: serviceUncheckedUpdateOneWithoutBikeNestedInput
-  }
-
-  export type BikeCreateManyInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    customerId: string
-  }
-
-  export type BikeUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type BikeUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    customerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type serviceCreateInput = {
-    id?: string
-    serviceDate: Date | string
-    completionDate?: Date | string | null
-    description: string
-    status: $Enums.serviceStatus
-    bike: BikeCreateNestedOneWithoutServiceInput
-  }
-
-  export type serviceUncheckedCreateInput = {
-    id?: string
-    bikeId: string
-    serviceDate: Date | string
-    completionDate?: Date | string | null
-    description: string
-    status: $Enums.serviceStatus
-  }
-
-  export type serviceUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
-    bike?: BikeUpdateOneRequiredWithoutServiceNestedInput
-  }
-
-  export type serviceUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bikeId?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
-  }
-
-  export type serviceCreateManyInput = {
-    id?: string
-    bikeId: string
-    serviceDate: Date | string
-    completionDate?: Date | string | null
-    description: string
-    status: $Enums.serviceStatus
-  }
-
-  export type serviceUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
-  }
-
-  export type serviceUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    bikeId?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
+    images?: ProjectUpdateimagesInput | string[]
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4913,39 +2176,44 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type BikeListRelationFilter = {
-    every?: BikeWhereInput
-    some?: BikeWhereInput
-    none?: BikeWhereInput
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
-  export type BikeOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type CustomerCountOrderByAggregateInput = {
+  export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
+    bannerImage?: SortOrder
+    description?: SortOrder
+    liveLink?: SortOrder
+    githubLink?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    images?: SortOrder
+  }
+
+  export type ProjectMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    bannerImage?: SortOrder
+    description?: SortOrder
+    liveLink?: SortOrder
+    githubLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
-  export type CustomerMaxOrderByAggregateInput = {
+  export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type CustomerMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
+    bannerImage?: SortOrder
+    description?: SortOrder
+    liveLink?: SortOrder
+    githubLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -4982,166 +2250,8 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type CustomerScalarRelationFilter = {
-    is?: CustomerWhereInput
-    isNot?: CustomerWhereInput
-  }
-
-  export type ServiceNullableScalarRelationFilter = {
-    is?: serviceWhereInput | null
-    isNot?: serviceWhereInput | null
-  }
-
-  export type BikeCountOrderByAggregateInput = {
-    id?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    year?: SortOrder
-    customerId?: SortOrder
-  }
-
-  export type BikeAvgOrderByAggregateInput = {
-    year?: SortOrder
-  }
-
-  export type BikeMaxOrderByAggregateInput = {
-    id?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    year?: SortOrder
-    customerId?: SortOrder
-  }
-
-  export type BikeMinOrderByAggregateInput = {
-    id?: SortOrder
-    brand?: SortOrder
-    model?: SortOrder
-    year?: SortOrder
-    customerId?: SortOrder
-  }
-
-  export type BikeSumOrderByAggregateInput = {
-    year?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type EnumserviceStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.serviceStatus | EnumserviceStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumserviceStatusFilter<$PrismaModel> | $Enums.serviceStatus
-  }
-
-  export type BikeScalarRelationFilter = {
-    is?: BikeWhereInput
-    isNot?: BikeWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type serviceCountOrderByAggregateInput = {
-    id?: SortOrder
-    bikeId?: SortOrder
-    serviceDate?: SortOrder
-    completionDate?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
-  }
-
-  export type serviceMaxOrderByAggregateInput = {
-    id?: SortOrder
-    bikeId?: SortOrder
-    serviceDate?: SortOrder
-    completionDate?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
-  }
-
-  export type serviceMinOrderByAggregateInput = {
-    id?: SortOrder
-    bikeId?: SortOrder
-    serviceDate?: SortOrder
-    completionDate?: SortOrder
-    description?: SortOrder
-    status?: SortOrder
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type EnumserviceStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.serviceStatus | EnumserviceStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumserviceStatusWithAggregatesFilter<$PrismaModel> | $Enums.serviceStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumserviceStatusFilter<$PrismaModel>
-    _max?: NestedEnumserviceStatusFilter<$PrismaModel>
-  }
-
-  export type BikeCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput> | BikeCreateWithoutCustomerInput[] | BikeUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: BikeCreateOrConnectWithoutCustomerInput | BikeCreateOrConnectWithoutCustomerInput[]
-    createMany?: BikeCreateManyCustomerInputEnvelope
-    connect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-  }
-
-  export type BikeUncheckedCreateNestedManyWithoutCustomerInput = {
-    create?: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput> | BikeCreateWithoutCustomerInput[] | BikeUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: BikeCreateOrConnectWithoutCustomerInput | BikeCreateOrConnectWithoutCustomerInput[]
-    createMany?: BikeCreateManyCustomerInputEnvelope
-    connect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
+  export type ProjectCreateimagesInput = {
+    set: string[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5152,108 +2262,9 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type BikeUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput> | BikeCreateWithoutCustomerInput[] | BikeUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: BikeCreateOrConnectWithoutCustomerInput | BikeCreateOrConnectWithoutCustomerInput[]
-    upsert?: BikeUpsertWithWhereUniqueWithoutCustomerInput | BikeUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: BikeCreateManyCustomerInputEnvelope
-    set?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    disconnect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    delete?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    connect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    update?: BikeUpdateWithWhereUniqueWithoutCustomerInput | BikeUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: BikeUpdateManyWithWhereWithoutCustomerInput | BikeUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: BikeScalarWhereInput | BikeScalarWhereInput[]
-  }
-
-  export type BikeUncheckedUpdateManyWithoutCustomerNestedInput = {
-    create?: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput> | BikeCreateWithoutCustomerInput[] | BikeUncheckedCreateWithoutCustomerInput[]
-    connectOrCreate?: BikeCreateOrConnectWithoutCustomerInput | BikeCreateOrConnectWithoutCustomerInput[]
-    upsert?: BikeUpsertWithWhereUniqueWithoutCustomerInput | BikeUpsertWithWhereUniqueWithoutCustomerInput[]
-    createMany?: BikeCreateManyCustomerInputEnvelope
-    set?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    disconnect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    delete?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    connect?: BikeWhereUniqueInput | BikeWhereUniqueInput[]
-    update?: BikeUpdateWithWhereUniqueWithoutCustomerInput | BikeUpdateWithWhereUniqueWithoutCustomerInput[]
-    updateMany?: BikeUpdateManyWithWhereWithoutCustomerInput | BikeUpdateManyWithWhereWithoutCustomerInput[]
-    deleteMany?: BikeScalarWhereInput | BikeScalarWhereInput[]
-  }
-
-  export type CustomerCreateNestedOneWithoutBikeInput = {
-    create?: XOR<CustomerCreateWithoutBikeInput, CustomerUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: CustomerCreateOrConnectWithoutBikeInput
-    connect?: CustomerWhereUniqueInput
-  }
-
-  export type serviceCreateNestedOneWithoutBikeInput = {
-    create?: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: serviceCreateOrConnectWithoutBikeInput
-    connect?: serviceWhereUniqueInput
-  }
-
-  export type serviceUncheckedCreateNestedOneWithoutBikeInput = {
-    create?: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: serviceCreateOrConnectWithoutBikeInput
-    connect?: serviceWhereUniqueInput
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type CustomerUpdateOneRequiredWithoutBikeNestedInput = {
-    create?: XOR<CustomerCreateWithoutBikeInput, CustomerUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: CustomerCreateOrConnectWithoutBikeInput
-    upsert?: CustomerUpsertWithoutBikeInput
-    connect?: CustomerWhereUniqueInput
-    update?: XOR<XOR<CustomerUpdateToOneWithWhereWithoutBikeInput, CustomerUpdateWithoutBikeInput>, CustomerUncheckedUpdateWithoutBikeInput>
-  }
-
-  export type serviceUpdateOneWithoutBikeNestedInput = {
-    create?: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: serviceCreateOrConnectWithoutBikeInput
-    upsert?: serviceUpsertWithoutBikeInput
-    disconnect?: serviceWhereInput | boolean
-    delete?: serviceWhereInput | boolean
-    connect?: serviceWhereUniqueInput
-    update?: XOR<XOR<serviceUpdateToOneWithWhereWithoutBikeInput, serviceUpdateWithoutBikeInput>, serviceUncheckedUpdateWithoutBikeInput>
-  }
-
-  export type serviceUncheckedUpdateOneWithoutBikeNestedInput = {
-    create?: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-    connectOrCreate?: serviceCreateOrConnectWithoutBikeInput
-    upsert?: serviceUpsertWithoutBikeInput
-    disconnect?: serviceWhereInput | boolean
-    delete?: serviceWhereInput | boolean
-    connect?: serviceWhereUniqueInput
-    update?: XOR<XOR<serviceUpdateToOneWithWhereWithoutBikeInput, serviceUpdateWithoutBikeInput>, serviceUncheckedUpdateWithoutBikeInput>
-  }
-
-  export type BikeCreateNestedOneWithoutServiceInput = {
-    create?: XOR<BikeCreateWithoutServiceInput, BikeUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: BikeCreateOrConnectWithoutServiceInput
-    connect?: BikeWhereUniqueInput
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
-  export type EnumserviceStatusFieldUpdateOperationsInput = {
-    set?: $Enums.serviceStatus
-  }
-
-  export type BikeUpdateOneRequiredWithoutServiceNestedInput = {
-    create?: XOR<BikeCreateWithoutServiceInput, BikeUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: BikeCreateOrConnectWithoutServiceInput
-    upsert?: BikeUpsertWithoutServiceInput
-    connect?: BikeWhereUniqueInput
-    update?: XOR<XOR<BikeUpdateToOneWithWhereWithoutServiceInput, BikeUpdateWithoutServiceInput>, BikeUncheckedUpdateWithoutServiceInput>
+  export type ProjectUpdateimagesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5321,317 +2332,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedEnumserviceStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.serviceStatus | EnumserviceStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumserviceStatusFilter<$PrismaModel> | $Enums.serviceStatus
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumserviceStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.serviceStatus | EnumserviceStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.serviceStatus[] | ListEnumserviceStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumserviceStatusWithAggregatesFilter<$PrismaModel> | $Enums.serviceStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumserviceStatusFilter<$PrismaModel>
-    _max?: NestedEnumserviceStatusFilter<$PrismaModel>
-  }
-
-  export type BikeCreateWithoutCustomerInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    service?: serviceCreateNestedOneWithoutBikeInput
-  }
-
-  export type BikeUncheckedCreateWithoutCustomerInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    service?: serviceUncheckedCreateNestedOneWithoutBikeInput
-  }
-
-  export type BikeCreateOrConnectWithoutCustomerInput = {
-    where: BikeWhereUniqueInput
-    create: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type BikeCreateManyCustomerInputEnvelope = {
-    data: BikeCreateManyCustomerInput | BikeCreateManyCustomerInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type BikeUpsertWithWhereUniqueWithoutCustomerInput = {
-    where: BikeWhereUniqueInput
-    update: XOR<BikeUpdateWithoutCustomerInput, BikeUncheckedUpdateWithoutCustomerInput>
-    create: XOR<BikeCreateWithoutCustomerInput, BikeUncheckedCreateWithoutCustomerInput>
-  }
-
-  export type BikeUpdateWithWhereUniqueWithoutCustomerInput = {
-    where: BikeWhereUniqueInput
-    data: XOR<BikeUpdateWithoutCustomerInput, BikeUncheckedUpdateWithoutCustomerInput>
-  }
-
-  export type BikeUpdateManyWithWhereWithoutCustomerInput = {
-    where: BikeScalarWhereInput
-    data: XOR<BikeUpdateManyMutationInput, BikeUncheckedUpdateManyWithoutCustomerInput>
-  }
-
-  export type BikeScalarWhereInput = {
-    AND?: BikeScalarWhereInput | BikeScalarWhereInput[]
-    OR?: BikeScalarWhereInput[]
-    NOT?: BikeScalarWhereInput | BikeScalarWhereInput[]
-    id?: StringFilter<"Bike"> | string
-    brand?: StringFilter<"Bike"> | string
-    model?: StringFilter<"Bike"> | string
-    year?: IntFilter<"Bike"> | number
-    customerId?: StringFilter<"Bike"> | string
-  }
-
-  export type CustomerCreateWithoutBikeInput = {
-    id?: string
-    name: string
-    email: string
-    phone: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CustomerUncheckedCreateWithoutBikeInput = {
-    id?: string
-    name: string
-    email: string
-    phone: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type CustomerCreateOrConnectWithoutBikeInput = {
-    where: CustomerWhereUniqueInput
-    create: XOR<CustomerCreateWithoutBikeInput, CustomerUncheckedCreateWithoutBikeInput>
-  }
-
-  export type serviceCreateWithoutBikeInput = {
-    id?: string
-    serviceDate: Date | string
-    completionDate?: Date | string | null
-    description: string
-    status: $Enums.serviceStatus
-  }
-
-  export type serviceUncheckedCreateWithoutBikeInput = {
-    id?: string
-    serviceDate: Date | string
-    completionDate?: Date | string | null
-    description: string
-    status: $Enums.serviceStatus
-  }
-
-  export type serviceCreateOrConnectWithoutBikeInput = {
-    where: serviceWhereUniqueInput
-    create: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-  }
-
-  export type CustomerUpsertWithoutBikeInput = {
-    update: XOR<CustomerUpdateWithoutBikeInput, CustomerUncheckedUpdateWithoutBikeInput>
-    create: XOR<CustomerCreateWithoutBikeInput, CustomerUncheckedCreateWithoutBikeInput>
-    where?: CustomerWhereInput
-  }
-
-  export type CustomerUpdateToOneWithWhereWithoutBikeInput = {
-    where?: CustomerWhereInput
-    data: XOR<CustomerUpdateWithoutBikeInput, CustomerUncheckedUpdateWithoutBikeInput>
-  }
-
-  export type CustomerUpdateWithoutBikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CustomerUncheckedUpdateWithoutBikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type serviceUpsertWithoutBikeInput = {
-    update: XOR<serviceUpdateWithoutBikeInput, serviceUncheckedUpdateWithoutBikeInput>
-    create: XOR<serviceCreateWithoutBikeInput, serviceUncheckedCreateWithoutBikeInput>
-    where?: serviceWhereInput
-  }
-
-  export type serviceUpdateToOneWithWhereWithoutBikeInput = {
-    where?: serviceWhereInput
-    data: XOR<serviceUpdateWithoutBikeInput, serviceUncheckedUpdateWithoutBikeInput>
-  }
-
-  export type serviceUpdateWithoutBikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
-  }
-
-  export type serviceUncheckedUpdateWithoutBikeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    serviceDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    completionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: StringFieldUpdateOperationsInput | string
-    status?: EnumserviceStatusFieldUpdateOperationsInput | $Enums.serviceStatus
-  }
-
-  export type BikeCreateWithoutServiceInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    customer: CustomerCreateNestedOneWithoutBikeInput
-  }
-
-  export type BikeUncheckedCreateWithoutServiceInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-    customerId: string
-  }
-
-  export type BikeCreateOrConnectWithoutServiceInput = {
-    where: BikeWhereUniqueInput
-    create: XOR<BikeCreateWithoutServiceInput, BikeUncheckedCreateWithoutServiceInput>
-  }
-
-  export type BikeUpsertWithoutServiceInput = {
-    update: XOR<BikeUpdateWithoutServiceInput, BikeUncheckedUpdateWithoutServiceInput>
-    create: XOR<BikeCreateWithoutServiceInput, BikeUncheckedCreateWithoutServiceInput>
-    where?: BikeWhereInput
-  }
-
-  export type BikeUpdateToOneWithWhereWithoutServiceInput = {
-    where?: BikeWhereInput
-    data: XOR<BikeUpdateWithoutServiceInput, BikeUncheckedUpdateWithoutServiceInput>
-  }
-
-  export type BikeUpdateWithoutServiceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    customer?: CustomerUpdateOneRequiredWithoutBikeNestedInput
-  }
-
-  export type BikeUncheckedUpdateWithoutServiceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    customerId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type BikeCreateManyCustomerInput = {
-    id?: string
-    brand: string
-    model: string
-    year: number
-  }
-
-  export type BikeUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    service?: serviceUpdateOneWithoutBikeNestedInput
-  }
-
-  export type BikeUncheckedUpdateWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
-    service?: serviceUncheckedUpdateOneWithoutBikeNestedInput
-  }
-
-  export type BikeUncheckedUpdateManyWithoutCustomerInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    brand?: StringFieldUpdateOperationsInput | string
-    model?: StringFieldUpdateOperationsInput | string
-    year?: IntFieldUpdateOperationsInput | number
   }
 
 

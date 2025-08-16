@@ -14,43 +14,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Customer {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  phone     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Bike      Bike[]
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  bannerImage String
+  description String
+  liveLink    String
+  githubLink  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      String[] // native Postgres array
 
-  @@map("customers")
+  @@map("projects")
 }
 
-model Bike {
-  id         String   @id @default(uuid())
-  brand      String
-  model      String
-  year       Int
-  customerId String   @unique
-  customer   Customer @relation(fields: [customerId], references: [id])
-  service    service?
+// model Customer {
+//   id        String   @id @default(uuid())
+//   name      String
+//   email     String   @unique
+//   phone     String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   Bike      Bike[]
 
-  @@map("bikes")
-}
-
-model service {
-  id             String        @id @default(uuid())
-  bikeId         String        @unique
-  serviceDate    DateTime
-  completionDate DateTime?
-  description    String
-  status         serviceStatus
-
-  bike Bike @relation(fields: [bikeId], references: [id])
-}
-
-enum serviceStatus {
-  PENDING
-  INPROGRESS
-  DONE
-}
+//   @@map("customers")
+// }

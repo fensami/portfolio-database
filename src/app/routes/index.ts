@@ -1,24 +1,22 @@
 import express from 'express';
-import { customerRoutes } from '../modules/customer/customer.route';
-import { BikeRoutes } from '../modules/bike/bike.route';
-import { BikeServicingRoutes } from '../modules/bikeService/bikeService.route';
+import { projectRoutes } from '../modules/projects/projects.route';
 
 
 const router = express.Router();
 
 const moduleRoutes = [
     {
-        path: "/customers",
-        route: customerRoutes
+        path: "/projects",
+        route: projectRoutes
     },
-    {
-        path: "/bikes",
-        route: BikeRoutes
-    },
-    {
-        path: "/services",
-        route: BikeServicingRoutes
-    },
+    // {
+    //     path: "/bikes",
+    //     route: BikeRoutes
+    // },
+    // {
+    //     path: "/services",
+    //     route: BikeServicingRoutes
+    // },
 ]
 
 
