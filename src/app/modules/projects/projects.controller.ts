@@ -1,4 +1,4 @@
-import { Request, RequestHandler, Response } from "express";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 // import catchAsync from "../../share/catchAsync";
 import HttpStatus from 'http-status';
 // import sendResponse from "../../share/sendResponse";
@@ -6,6 +6,10 @@ import { projectServices } from "./projects.service";
 import catchAsync from "../../share/catchAsync";
 import sendResponse from "../../share/sendResponse";
 
+
+/**==================
+   Create Project
+   ==================**/
 const createProject = async (req: Request, res: Response) => {
 
 
@@ -34,7 +38,9 @@ const createProject = async (req: Request, res: Response) => {
 
 }
 
-// Get all
+/**==================
+    Get All
+   ==================**/
 const getAllProjectsFromDb: RequestHandler = catchAsync(async (req: Request, res: Response) => {
 
     const result = await projectServices.getAllProjectsFromDb();
@@ -48,6 +54,9 @@ const getAllProjectsFromDb: RequestHandler = catchAsync(async (req: Request, res
 
 
 })
+/**==================
+   Single Id Get
+   ==================**/
 const getSingleProjectFromDb: RequestHandler = catchAsync(async (req: Request, res: Response) => {
 
     const { id } = req.params;
@@ -65,8 +74,47 @@ const getSingleProjectFromDb: RequestHandler = catchAsync(async (req: Request, r
 
 
 })
+/**==================
+   Delete
+   ==================**/
+const projectDeleteFromDb = catchAsync(async (req: Request, res: Response) => {
+
+    const { id } = req.params;
+
+    const result = await projectServices.deleteProjectFromDb(id);
+
+    sendResponse(res, {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Project deleted successfully"
+    })
+
+
+})
+
+/**==================
+   Update
+   ==================**/
+const projectDataUpdated = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+
+    const { id } = req.params;
+
+
+    const result = await projectServices.updateProjectIntoDb(id, req.body);
+
+
+    sendResponse(res, {
+        statusCode: HttpStatus.OK,
+        success: true,
+        message: "Project updated successfully",
+        data: result
+    })
+
+})
 export const projectController = {
     createProject,
     getAllProjectsFromDb,
-    getSingleProjectFromDb
+    getSingleProjectFromDb,
+    projectDeleteFromDb,
+    projectDataUpdated
 }

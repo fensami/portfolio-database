@@ -125,8 +125,11 @@ exports.Prisma.ProjectScalarFieldEnum = {
   name: 'name',
   bannerImage: 'bannerImage',
   description: 'description',
+  multipleDescriptions: 'multipleDescriptions',
   liveLink: 'liveLink',
   githubLink: 'githubLink',
+  serverLink: 'serverLink',
+  technologies: 'technologies',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   images: 'images'
@@ -140,6 +143,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

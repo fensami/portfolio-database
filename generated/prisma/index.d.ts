@@ -873,6 +873,7 @@ export namespace Prisma {
     description: string | null
     liveLink: string | null
     githubLink: string | null
+    serverLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -884,6 +885,7 @@ export namespace Prisma {
     description: string | null
     liveLink: string | null
     githubLink: string | null
+    serverLink: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -893,8 +895,11 @@ export namespace Prisma {
     name: number
     bannerImage: number
     description: number
+    multipleDescriptions: number
     liveLink: number
     githubLink: number
+    serverLink: number
+    technologies: number
     createdAt: number
     updatedAt: number
     images: number
@@ -909,6 +914,7 @@ export namespace Prisma {
     description?: true
     liveLink?: true
     githubLink?: true
+    serverLink?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -920,6 +926,7 @@ export namespace Prisma {
     description?: true
     liveLink?: true
     githubLink?: true
+    serverLink?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -929,8 +936,11 @@ export namespace Prisma {
     name?: true
     bannerImage?: true
     description?: true
+    multipleDescriptions?: true
     liveLink?: true
     githubLink?: true
+    serverLink?: true
+    technologies?: true
     createdAt?: true
     updatedAt?: true
     images?: true
@@ -1014,8 +1024,11 @@ export namespace Prisma {
     name: string
     bannerImage: string
     description: string
+    multipleDescriptions: string[]
     liveLink: string
     githubLink: string
+    serverLink: string | null
+    technologies: string[]
     createdAt: Date
     updatedAt: Date
     images: string[]
@@ -1043,8 +1056,11 @@ export namespace Prisma {
     name?: boolean
     bannerImage?: boolean
     description?: boolean
+    multipleDescriptions?: boolean
     liveLink?: boolean
     githubLink?: boolean
+    serverLink?: boolean
+    technologies?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     images?: boolean
@@ -1055,8 +1071,11 @@ export namespace Prisma {
     name?: boolean
     bannerImage?: boolean
     description?: boolean
+    multipleDescriptions?: boolean
     liveLink?: boolean
     githubLink?: boolean
+    serverLink?: boolean
+    technologies?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     images?: boolean
@@ -1067,8 +1086,11 @@ export namespace Prisma {
     name?: boolean
     bannerImage?: boolean
     description?: boolean
+    multipleDescriptions?: boolean
     liveLink?: boolean
     githubLink?: boolean
+    serverLink?: boolean
+    technologies?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     images?: boolean
@@ -1079,14 +1101,17 @@ export namespace Prisma {
     name?: boolean
     bannerImage?: boolean
     description?: boolean
+    multipleDescriptions?: boolean
     liveLink?: boolean
     githubLink?: boolean
+    serverLink?: boolean
+    technologies?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     images?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "bannerImage" | "description" | "liveLink" | "githubLink" | "createdAt" | "updatedAt" | "images", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "bannerImage" | "description" | "multipleDescriptions" | "liveLink" | "githubLink" | "serverLink" | "technologies" | "createdAt" | "updatedAt" | "images", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
@@ -1096,8 +1121,11 @@ export namespace Prisma {
       name: string
       bannerImage: string
       description: string
+      multipleDescriptions: string[]
       liveLink: string
       githubLink: string
+      serverLink: string | null
+      technologies: string[]
       createdAt: Date
       updatedAt: Date
       images: string[]
@@ -1528,8 +1556,11 @@ export namespace Prisma {
     readonly name: FieldRef<"Project", 'String'>
     readonly bannerImage: FieldRef<"Project", 'String'>
     readonly description: FieldRef<"Project", 'String'>
+    readonly multipleDescriptions: FieldRef<"Project", 'String[]'>
     readonly liveLink: FieldRef<"Project", 'String'>
     readonly githubLink: FieldRef<"Project", 'String'>
+    readonly serverLink: FieldRef<"Project", 'String'>
+    readonly technologies: FieldRef<"Project", 'String[]'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
     readonly updatedAt: FieldRef<"Project", 'DateTime'>
     readonly images: FieldRef<"Project", 'String[]'>
@@ -1918,8 +1949,11 @@ export namespace Prisma {
     name: 'name',
     bannerImage: 'bannerImage',
     description: 'description',
+    multipleDescriptions: 'multipleDescriptions',
     liveLink: 'liveLink',
     githubLink: 'githubLink',
+    serverLink: 'serverLink',
+    technologies: 'technologies',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     images: 'images'
@@ -1942,6 +1976,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -2002,8 +2044,11 @@ export namespace Prisma {
     name?: StringFilter<"Project"> | string
     bannerImage?: StringFilter<"Project"> | string
     description?: StringFilter<"Project"> | string
+    multipleDescriptions?: StringNullableListFilter<"Project">
     liveLink?: StringFilter<"Project"> | string
     githubLink?: StringFilter<"Project"> | string
+    serverLink?: StringNullableFilter<"Project"> | string | null
+    technologies?: StringNullableListFilter<"Project">
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     images?: StringNullableListFilter<"Project">
@@ -2014,8 +2059,11 @@ export namespace Prisma {
     name?: SortOrder
     bannerImage?: SortOrder
     description?: SortOrder
+    multipleDescriptions?: SortOrder
     liveLink?: SortOrder
     githubLink?: SortOrder
+    serverLink?: SortOrderInput | SortOrder
+    technologies?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     images?: SortOrder
@@ -2029,8 +2077,11 @@ export namespace Prisma {
     name?: StringFilter<"Project"> | string
     bannerImage?: StringFilter<"Project"> | string
     description?: StringFilter<"Project"> | string
+    multipleDescriptions?: StringNullableListFilter<"Project">
     liveLink?: StringFilter<"Project"> | string
     githubLink?: StringFilter<"Project"> | string
+    serverLink?: StringNullableFilter<"Project"> | string | null
+    technologies?: StringNullableListFilter<"Project">
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
     images?: StringNullableListFilter<"Project">
@@ -2041,8 +2092,11 @@ export namespace Prisma {
     name?: SortOrder
     bannerImage?: SortOrder
     description?: SortOrder
+    multipleDescriptions?: SortOrder
     liveLink?: SortOrder
     githubLink?: SortOrder
+    serverLink?: SortOrderInput | SortOrder
+    technologies?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     images?: SortOrder
@@ -2059,8 +2113,11 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Project"> | string
     bannerImage?: StringWithAggregatesFilter<"Project"> | string
     description?: StringWithAggregatesFilter<"Project"> | string
+    multipleDescriptions?: StringNullableListFilter<"Project">
     liveLink?: StringWithAggregatesFilter<"Project"> | string
     githubLink?: StringWithAggregatesFilter<"Project"> | string
+    serverLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    technologies?: StringNullableListFilter<"Project">
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     images?: StringNullableListFilter<"Project">
@@ -2071,8 +2128,11 @@ export namespace Prisma {
     name: string
     bannerImage: string
     description: string
+    multipleDescriptions?: ProjectCreatemultipleDescriptionsInput | string[]
     liveLink: string
     githubLink: string
+    serverLink?: string | null
+    technologies?: ProjectCreatetechnologiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     images?: ProjectCreateimagesInput | string[]
@@ -2083,8 +2143,11 @@ export namespace Prisma {
     name: string
     bannerImage: string
     description: string
+    multipleDescriptions?: ProjectCreatemultipleDescriptionsInput | string[]
     liveLink: string
     githubLink: string
+    serverLink?: string | null
+    technologies?: ProjectCreatetechnologiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     images?: ProjectCreateimagesInput | string[]
@@ -2095,8 +2158,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     bannerImage?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    multipleDescriptions?: ProjectUpdatemultipleDescriptionsInput | string[]
     liveLink?: StringFieldUpdateOperationsInput | string
     githubLink?: StringFieldUpdateOperationsInput | string
+    serverLink?: NullableStringFieldUpdateOperationsInput | string | null
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: ProjectUpdateimagesInput | string[]
@@ -2107,8 +2173,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     bannerImage?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    multipleDescriptions?: ProjectUpdatemultipleDescriptionsInput | string[]
     liveLink?: StringFieldUpdateOperationsInput | string
     githubLink?: StringFieldUpdateOperationsInput | string
+    serverLink?: NullableStringFieldUpdateOperationsInput | string | null
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: ProjectUpdateimagesInput | string[]
@@ -2119,8 +2188,11 @@ export namespace Prisma {
     name: string
     bannerImage: string
     description: string
+    multipleDescriptions?: ProjectCreatemultipleDescriptionsInput | string[]
     liveLink: string
     githubLink: string
+    serverLink?: string | null
+    technologies?: ProjectCreatetechnologiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     images?: ProjectCreateimagesInput | string[]
@@ -2131,8 +2203,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     bannerImage?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    multipleDescriptions?: ProjectUpdatemultipleDescriptionsInput | string[]
     liveLink?: StringFieldUpdateOperationsInput | string
     githubLink?: StringFieldUpdateOperationsInput | string
+    serverLink?: NullableStringFieldUpdateOperationsInput | string | null
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: ProjectUpdateimagesInput | string[]
@@ -2143,8 +2218,11 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     bannerImage?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    multipleDescriptions?: ProjectUpdatemultipleDescriptionsInput | string[]
     liveLink?: StringFieldUpdateOperationsInput | string
     githubLink?: StringFieldUpdateOperationsInput | string
+    serverLink?: NullableStringFieldUpdateOperationsInput | string | null
+    technologies?: ProjectUpdatetechnologiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: ProjectUpdateimagesInput | string[]
@@ -2165,6 +2243,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2176,12 +2277,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type ProjectCountOrderByAggregateInput = {
@@ -2189,8 +2287,11 @@ export namespace Prisma {
     name?: SortOrder
     bannerImage?: SortOrder
     description?: SortOrder
+    multipleDescriptions?: SortOrder
     liveLink?: SortOrder
     githubLink?: SortOrder
+    serverLink?: SortOrder
+    technologies?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     images?: SortOrder
@@ -2203,6 +2304,7 @@ export namespace Prisma {
     description?: SortOrder
     liveLink?: SortOrder
     githubLink?: SortOrder
+    serverLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2214,6 +2316,7 @@ export namespace Prisma {
     description?: SortOrder
     liveLink?: SortOrder
     githubLink?: SortOrder
+    serverLink?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2236,6 +2339,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2250,12 +2371,34 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type ProjectCreatemultipleDescriptionsInput = {
+    set: string[]
+  }
+
+  export type ProjectCreatetechnologiesInput = {
+    set: string[]
+  }
+
   export type ProjectCreateimagesInput = {
     set: string[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type ProjectUpdatemultipleDescriptionsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type ProjectUpdatetechnologiesInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2279,6 +2422,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2318,6 +2475,34 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {

@@ -15,15 +15,18 @@ datasource db {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  name        String
-  bannerImage String
-  description String
-  liveLink    String
-  githubLink  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  images      String[] // native Postgres array
+  id                   String   @id @default(uuid())
+  name                 String
+  bannerImage          String
+  description          String
+  multipleDescriptions String[] // multiple description points
+  liveLink             String
+  githubLink           String
+  serverLink           String?
+  technologies         String[]
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  images               String[] // native Postgres array
 
   @@map("projects")
 }
