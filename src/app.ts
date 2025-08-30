@@ -24,8 +24,7 @@ app.get("/", (req: Request, res: Response) => {
         message: "Welcome to My Portfolio Database"
     })
 })
-// app.use('/api/v1/user', userRoutes)
-// app.use('/api/v1/admin', adminRoutes)
+
 
 app.use('/api', router)
 
